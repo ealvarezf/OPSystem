@@ -1,0 +1,231 @@
+.igmc_Control
+{
+	background-color:White;
+	font-family: Segoe UI, Verdana, Arial, Georgia, Sans-Serif;
+	border:solid 1px #B1B1B1;
+	border-collapse:Separate;
+	margin:0px;
+	padding:0px;
+	width: 225px;
+	height: 200px;
+}
+
+
+.igmc_Header
+{
+	background-color:#888888;
+	border-bottom-width:0px;
+	height: 30px;
+}
+
+
+.igmc_Footer
+{
+	background-color:#888888;
+	font-size:11px;
+	height: 30px;
+	color:White;
+	text-align:center;
+}
+
+
+.igmc_DOW
+{
+	background-color:#EAEAEA;
+	font-size:11px;
+	border-width:0px;
+	border-bottom-style:none;
+	margin:0px;
+	padding:0px;
+	height: 30px;
+	color:#666666;
+	text-align:center;
+}
+
+
+.igmc_NextPrev
+{
+	font-size:0.8em;
+	margin:0px;
+	padding:0px 8px 0px 8px;
+	color:White;
+}
+
+
+.igmc_MonthYear
+{
+	font-size:12px;
+	padding-top:0px;
+	padding-right:2px;
+	line-height: 30px;
+	color:White;
+}
+
+
+.igmc_Day
+{
+	background-color:Transparent;
+	font-size:12px;
+	border:solid 1px #FFFFFF;
+	color:#444444;
+	text-align:center;
+}
+
+
+/* CSS classes for Month and Year selection Popup in header */
+.igmc_List
+{
+	background-color:#000FFF;
+	border:solid 1px #BBBBBB;
+}
+
+
+.igmc_Item
+{
+	background-color:#000FFF;
+	font-size:1em;
+	border:solid 1px White;
+	color:#444444;
+	text-align:center;
+}
+
+
+.igmc_HoverFooter
+{
+	background-color:#888888;
+	color:White;
+}
+
+
+.igmc_HoverNextPrev
+{
+	cursor:pointer;
+	color:#3BB7EB;
+}
+
+
+.igmc_HoverMonthYear
+{
+	cursor:pointer;
+	color:White;
+}
+
+
+.igmc_WeekNumber
+{
+	background-color:Transparent;
+	font-weight:bold;
+	color:#21272D;
+}
+
+
+.igmc_WeekendDay
+{
+	background-color:#F9F9F9;
+	border:solid 1px #F9F9F9;
+}
+
+
+.igmc_SelectedItem
+{
+	background-color:#9ECBD6;
+	font-weight:bold;
+	border:solid 1px #4897AA;
+	cursor:pointer;
+}
+
+
+.igmc_PressedFooter
+{
+	background-color:#888888;
+}
+
+
+.igmc_PressedNextPrev
+{
+}
+
+
+.igmc_PressedMonthYear
+{
+	color:White;
+}
+
+
+.igmc_OtherMonthDay
+{
+	background-image:none;
+	color:#999999;
+}
+
+
+.igmc_HoverItem
+{
+	background-color:#CCCCCC;
+	font-weight:bold;
+	border:solid 1px #999999;
+	cursor:pointer;
+	color:#444444;
+}
+
+
+.igmc_TodayDay
+{
+	color:#4897AA;
+}
+
+
+.igmc_SelectedDay
+{
+	background-color:#9ECBD6;
+	border:solid 1px #4897AA;
+}
+
+
+.igmc_FocusDay
+{
+}
+
+
+.igmc_HoverDay
+{
+}
+
+
+.igmc_DisabledDay
+{
+	color:#000EEE;
+}
+
+
+.igmc_OtherMonthDay.igmc_HoverDay
+{
+	background-color:#CCCCCC;
+	border:solid 1px #999999;
+}
+
+
+.igmc_Day.igmc_OtherMonthDay
+{
+	background-image:none;
+	font-weight:normal;
+	font-size:12px;
+	color:#A4A4A4;
+}
+
+
+/*Bug 215835, 17.03.2016, S.D. */
+.igmc_focusday, .igmc_OtherMonthDay.igmc_focusday, .igmc_WeekendDay.igmc_FocusDay
+{
+	background-color:White;
+	border:solid 1px #4897AA;
+}
+
+
+.igmc_hoverday, .igmc_HoverDay.igmc_todayday, .igmc_WeekendDay.igmc_HoverDay
+{
+	background-color:#CCCCCC;
+	border:solid 1px #999999;
+}
+
+

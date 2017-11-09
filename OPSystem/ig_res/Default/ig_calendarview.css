@@ -1,0 +1,112 @@
+.igcv_Control
+{
+	background-color:#888888;
+	font-weight:normal;
+	font-family: 'Segoe UI',verdana,sans-serif;
+	border:solid 1px #B1B1B1;
+	overflow: auto;
+	position: relative;
+}
+
+
+.igcv_CaptionHeader
+{
+	font-weight:bold;
+	font-size:8pt;
+	padding:3px;
+	width: 100%;
+	white-space: nowrap;
+	color:White;
+	text-align:center;
+}
+
+
+.igcv_DayHeader
+{
+	background-color:#EAEAEA;
+	font-size:11px;
+	border-width:0px;
+	border-bottom-style:none;
+	margin:0px;
+	padding:0px;
+	height: 30px;
+	color:#666666;
+	text-align:center;
+}
+
+
+.igcv_Day
+{
+	background-color:White;
+	font-size:12px;
+	border:solid 1px #FFFFFF;
+	border-right-width:0px;
+	border-bottom-width:0px;
+	overflow: hidden;
+	cursor:pointer;
+	color:#444444;
+	text-align:center;
+	vertical-align:top;
+}
+
+
+.igcv_Footer
+{
+	background-color:#888888;
+	font-size:11px;
+	height: 30px;
+	white-space: nowrap;
+	cursor:pointer;
+	color:White;
+	text-align:center;
+}
+
+
+.igcv_DropDown
+{
+	font-size:8pt;
+}
+
+
+.igcv_OtherMonthDay
+{
+	background-color:White;
+	color:#999999;
+}
+
+
+.igcv_WeekendDay
+{
+	background-color:#F9F9F9;
+	border:solid 1px #F9F9F9;
+}
+
+
+.igcv_NavigationButton
+{
+	background-color:Transparent;
+	padding-right:3px;
+	padding-left:3px;
+	cursor:pointer;
+}
+
+
+.igcv_TodayDay
+{
+	color:#4897AA;
+}
+
+
+.igcv_ActivityDay
+{
+	font-weight:bold;
+}
+
+
+.igcv_ActiveDay
+{
+	background-color:#9ECBD6;
+	border:solid 1px #4897AA;
+}
+
+
