@@ -1,6 +1,5 @@
 ﻿Imports Security_System
 'Ernesto Alvarez Flores
-'Prueba de colaboración
 Public Class MovAlmacen
     Inherits System.Web.UI.Page
     Private Ds As New DataSet
