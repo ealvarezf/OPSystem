@@ -5,6 +5,7 @@ Public Class BarEventos
     Private oUsr As New UserLogin
     Public Sub New()
         Consultar = New ItemEvento("Consultar", btnConsultar)
+        Especial1 = New ItemEvento("Especial1", btnConsultar)
     End Sub
     Public Property EtiquetaMaestro() As New Label
     Public Property EtiquetaDetalle() As New Label

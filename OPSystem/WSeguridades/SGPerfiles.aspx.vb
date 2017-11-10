@@ -148,7 +148,7 @@ Public Class SGPerfiles
         SaveTable = False
         Try
             oCs.Create("@PerfilID", txt_PerfilID.Text)
-            Dim oTb As DataTable = oSql._Item(oSql.Item, "PERFILES", oCs)
+            Dim oTb As DataTable = oSql._Item(oSql.Item, "SGPERFILES", oCs)
             If Not oTb Is Nothing Then
                 oTb.Columns("PerfilID").Unique = True
                 If oTb.Rows.Count = 0 Then

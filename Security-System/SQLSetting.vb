@@ -411,19 +411,19 @@ Public Class SQLUsuarios
         Get
             Return " SELECT S.SgUserID,S.SgUserName,S.SgUserEmail,S.SgUserAlta,PerfilNombre,S.SgApellidos,S.SgNombre " &
                       "  FROM SGUSUARIOS S " &
-                      "  LEFT JOIN PERFILES P ON P.PerfilID =S.PerfilID  "
+                      "  LEFT JOIN SGPERFILES P ON P.PerfilID =S.PerfilID  "
         End Get
     End Property
 
     Public ReadOnly Property ItemSearchPerfilID() As String
         Get
-            Return " SELECT PerfilID,PerfilNombre FROM PERFILES "
+            Return " SELECT PerfilID,PerfilNombre FROM SGPERFILES "
         End Get
     End Property
 
     Public ReadOnly Property ItemPerfilID() As String
         Get
-            Return " SELECT PerfilID,PerfilNombre FROM PERFILES "
+            Return " SELECT PerfilID,PerfilNombre FROM SGPERFILES "
         End Get
     End Property
 
