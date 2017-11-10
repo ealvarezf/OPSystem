@@ -8,6 +8,7 @@ Public Class MovAlmacenDetalle
 #Region "Inicializar datos"
     Private Sub SetFormConfig()
         Try
+            Dim bHabilita As Boolean = (GenInfoMovimiento(lblTitulo.Text.Substring(0, 1), lblTitulo.Text.Substring(1, lblTitulo.Text.Length - 1), "MovAlmacenStsProceso") = "A")
             pnlEventos.Visible = True
             pnlFiltros.Visible = False
             pnlAdd.Visible = False
@@ -15,6 +16,9 @@ Public Class MovAlmacenDetalle
 
             With BarEventos1
                 .Filtrar.Boton.Visible = False
+                .Nuevo.Boton.Enabled = bHabilita
+                .Editar.Boton.Enabled = bHabilita
+                .Eliminar.Boton.Enabled = bHabilita
             End With
 
             LoadComboProductos(ddl_ProductoID)
@@ -106,8 +110,21 @@ Public Class MovAlmacenDetalle
             Tools.AddErrorLog(oUsr.Mis.Log, ex.Message)
         End Try
     End Sub
+    Private Function GenInfoMovimiento(ByVal sKey As String, ByVal iKey As Integer, ByVal sReq As String) As String
+        Dim oSql As New SQLMovimientosAlmacen(oUsr)
+        Dim oCs As New ColeccionPrmSql
+        GenInfoMovimiento = String.Empty
+        Try
+            oCs.Create("@MovAlmacenSentido", sKey)
+            oCs.Create("@MovAlmacenID", iKey)
+            Return oSql._Value(oSql.Item, sReq, oCs)
+        Catch ex As Exception
+            Tools.AddErrorLog(oUsr.Mis.Log, ex.Message)
+        End Try
+    End Function
     Private Function GetPreLote(ByVal sKey As String, ByVal iKey As Integer) As String
         Dim oSql As New SQLMovimientosAlmacen(oUsr)
+        Dim oCs As New ColeccionPrmSql
         GetPreLote = String.Empty
         Try
             oCs.Create("@MovAlmacenSentido", sKey)
@@ -235,10 +252,10 @@ Public Class MovAlmacenDetalle
                 oTb.Columns("MovAlmacenLote").Unique = True
                 If oTb.Rows.Count = 0 Then
                     Dim Dr As DataRow = oTb.NewRow
-                    Dr("MovAlmacenSentido") = lblTitulo.Text.Substring(0, 1)
-                    Dr("MovAlmacenID") = lblTitulo.Text.Substring(1, lblTitulo.Text.Length - 1)
-                    Dr("ProductoID") = ddl_ProductoID.SelectedValue
-                    Dr("MovAlmacenLote") = txt_MovAlmacenLote.Text
+                    Dr("MovAlmacenSentido") = oCs.ItemValue("@MovAlmacenSentido")
+                    Dr("MovAlmacenID") = oCs.ItemValue("@MovAlmacenID")
+                    Dr("ProductoID") = oCs.ItemValue("@ProductoID")
+                    Dr("MovAlmacenLote") = oCs.ItemValue("@MovAlmacenLote")
                     Dr("MovAlmacenCantidad") = Val(txt_MovAlmacenCantidad.Text)
                     Dr("MovAlmacenPeso") = Val(txt_MovAlmacenPeso.Text)
                     oTb.Rows.Add(Dr)

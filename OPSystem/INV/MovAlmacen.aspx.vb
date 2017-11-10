@@ -47,7 +47,6 @@ Public Class MovAlmacen
         End Try
     End Sub
 #End Region
-
 #Region "CargaDatos"
     Private Sub LoadLista()
         Dim oSql As New SQLMovimientosAlmacen(oUsr)
@@ -242,7 +241,7 @@ Public Class MovAlmacen
                             GetIndex(ddl_ProcesoID, Dr("ProcesoID").ToString)
                             txt_MovAlmacenObs.Text = Dr("MovAlmacenObs")
 
-                            If sAcc = "Especial1" And Dr("MovAlmacenStsProceso") = "B" Then
+                            If Dr("MovAlmacenStsProceso") = "B" Then
                                 Response.Write("<script>window.alert('Registro ya aplicado a inventario ');</script>")
                                 ImgBtnAceptar.Enabled = False
                             End If
@@ -337,7 +336,6 @@ Public Class MovAlmacen
         pnlFiltros.Visible = False
     End Sub
 #End Region
-
 #Region "AccionesDatos"
     Private Function Delete() As Boolean
         Dim oSql As New SQLMovimientosAlmacen(oUsr)
