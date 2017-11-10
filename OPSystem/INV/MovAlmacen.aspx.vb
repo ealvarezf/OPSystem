@@ -8,6 +8,10 @@ Public Class MovAlmacen
     Private oCs As New ColeccionPrmSql
 
 #Region "Inicializar datos"
+    Private Function abc() As Boolean
+    End Function
+
+
     Private Sub SetFormConfig()
         Try
             pnlEventos.Visible = True
