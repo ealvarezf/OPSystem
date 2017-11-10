@@ -9,6 +9,7 @@ Public Class MovAlmacen
 
 #Region "Inicializar datos"
     Private Function abc() As Boolean
+        'Paco
     End Function
 
 
