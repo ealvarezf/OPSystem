@@ -445,11 +445,12 @@ Module GFunciones
     Public Sub GetIndex(ByRef oDDL As DropDownList, ByVal Val As Object)
         Try
             oDDL.SelectedIndex = -1
-            For Each NextItem As ListItem In oDDL.Items
-                If NextItem.Value = Val Then
-                    NextItem.Selected = True
-                End If
-            Next
+            'For Each NextItem As ListItem In oDDL.Items
+            '    If NextItem.Value = Val Then
+            '        NextItem.Selected = True
+            '    End If
+            'Next
+            oDDL.Items.FindByValue(Val).Selected = True
         Catch ex As Exception
             Dim s As String = ex.Message
         End Try

@@ -20,6 +20,18 @@
         End Get
     End Property
 
+    Public Function _Item(ByVal sTabla As String, ByVal oCs As ColeccionPrmSql) As DataTable
+        _Item = Nothing
+        Try
+            If GetQry(Ds, sTabla, Item, oCs) Then
+                Return Ds.Tables(sTabla)
+            End If
+
+        Catch ex As Exception
+            AddErrorLog(m_sLog, ex.Message)
+        End Try
+    End Function
+
 End Class
 
 Public Class SQLEstructuras

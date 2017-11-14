@@ -98,6 +98,18 @@ Public Class SQL
         End Try
     End Function
 
+    Public Function _Valor(ByVal sQry As String, ByVal oCs As ColeccionPrmSql) As Object
+        Dim Ds As New DataSet
+        _Valor = Nothing
+        Try
+            If GetQry(Ds, "VALOR", sQry, oCs) Then
+                Return Ds.Tables("VALOR").Rows(0).Item(oCs.ItemValue("_VALOR"))
+            End If
+        Catch ex As Exception
+            Tools.AddErrorLog(m_oUsr.Mis.Log, ex.Message + vbCrLf + ex.TargetSite.ToString)
+        End Try
+    End Function
+
     Public Function _Value(ByVal sQry As String, ByVal sField As String, ByVal oCs As ColeccionPrmSql) As Object
         Dim Ds As New DataSet
         _Value = Nothing

@@ -47,6 +47,32 @@
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CRVsPackageLib, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>..\packages\CrystalReportsWeb.13.0.9.1312\lib\net40\CRVsPackageLib.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <HintPath>..\packages\CrystalReportsWeb.13.0.9.1312\lib\net40\CrystalDecisions.CrystalReports.Engine.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportAppServer.ClientDoc, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>..\packages\CrystalReportsWeb.13.0.9.1312\lib\net40\CrystalDecisions.ReportAppServer.ClientDoc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <HintPath>..\packages\CrystalReportsWeb.13.0.9.1312\lib\net40\CrystalDecisions.ReportSource.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <HintPath>..\packages\CrystalReportsWeb.13.0.9.1312\lib\net40\CrystalDecisions.Shared.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CrystalDecisions.Web, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <HintPath>..\packages\CrystalDecisions.Web.1.0.1\lib\CrystalDecisions.Web.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Infragistics.Olap.DataProvider.Adomd.Mvc, Version=5.17.1.2029, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
     <Reference Include="Infragistics4.WebUI.Documents.Reports.v17.1, Version=17.1.20171.2001, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
     <Reference Include="Infragistics4.WebUI.WebResizingExtender.v17.1, Version=17.1.20171.1001, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
@@ -241,6 +267,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
     <Content Include="ControlUser\BarEventos.ascx" />
+    <Content Include="ControlUser\BarEventosOld.ascx" />
     <Content Include="CSS\demos.css" />
     <Content Include="CSS\jquery-ui.css" />
     <Content Include="CSS\jquery.ui.all.css" />
@@ -414,6 +441,8 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Bundle.config" />
+    <Content Include="WEmpaque\Fletes.aspx" />
+    <Content Include="WEmpaque\Show.aspx" />
     <Content Include="WSeguridades\SGEstructuraDetalle.aspx" />
     <Content Include="WSeguridades\SGEstructuras.aspx" />
     <Content Include="WSeguridades\SGFunciones.aspx" />
@@ -423,6 +452,7 @@
     <Content Include="WSeguridades\SGSubFunciones.aspx" />
     <Content Include="WSeguridades\SGUsuarios.aspx" />
     <Content Include="WSeguridades\Web.config" />
+    <Content Include="WEmpaque\Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Account\AddPhoneNumber.aspx.designer.vb">
@@ -556,6 +586,13 @@
       <DependentUpon>BarEventos.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="ControlUser\BarEventosOld.ascx.designer.vb">
+      <DependentUpon>BarEventosOld.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="ControlUser\BarEventosOld.ascx.vb">
+      <DependentUpon>BarEventosOld.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="ControlUser\Userc.vb" />
     <Compile Include="Default.aspx.vb">
       <SubType>ASPXCodeBehind</SubType>
@@ -652,6 +689,20 @@
     <Compile Include="Site.Mobile.Master.designer.vb">
       <DependentUpon>Site.Mobile.Master</DependentUpon>
     </Compile>
+    <Compile Include="WEmpaque\Fletes.aspx.designer.vb">
+      <DependentUpon>Fletes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WEmpaque\Fletes.aspx.vb">
+      <DependentUpon>Fletes.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="WEmpaque\Show.aspx.designer.vb">
+      <DependentUpon>Show.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WEmpaque\Show.aspx.vb">
+      <DependentUpon>Show.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
     <Compile Include="WSeguridades\SGEstructuraDetalle.aspx.designer.vb">
       <DependentUpon>SGEstructuraDetalle.aspx</DependentUpon>
     </Compile>
@@ -742,11 +793,16 @@
   <ItemGroup>
     <Folder Include="Accesos\" />
     <Folder Include="App_Data\" />
+    <Folder Include="WEmpaque\Rp\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Security-System\Security-System.vbproj">
       <Project>{f18a5127-07f0-4a51-96e2-dfc4e6fd3ede}</Project>
       <Name>Security-System</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Sys-Empaque\Sys-Empaque.vbproj">
+      <Project>{56d1b589-cc6d-43a0-98c9-edecca7d664e}</Project>
+      <Name>Sys-Empaque</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
