@@ -680,6 +680,12 @@
       <DependentUpon>Fletes.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
+    <Compile Include="WEmpaque\Rp\CryFlete.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CryFlete.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="WEmpaque\Show.aspx.designer.vb">
       <DependentUpon>Show.aspx</DependentUpon>
     </Compile>
@@ -751,6 +757,10 @@
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="WEmpaque\Rp\CryFlete.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CryFlete.vb</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="My Project\Application.myapp">
@@ -777,7 +787,6 @@
   <ItemGroup>
     <Folder Include="Accesos\" />
     <Folder Include="App_Data\" />
-    <Folder Include="WEmpaque\Rp\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Security-System\Security-System.vbproj">
@@ -788,6 +797,9 @@
       <Project>{56d1b589-cc6d-43a0-98c9-edecca7d664e}</Project>
       <Name>Sys-Empaque</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
