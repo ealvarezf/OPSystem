@@ -1,0 +1,226 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DataFletes" targetNamespace="http://tempuri.org/DataFletes.xsd" xmlns:mstns="http://tempuri.org/DataFletes.xsd" xmlns="http://tempuri.org/DataFletes.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="AgroGEConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="AgroGEConnectionString (Web.config)" ParameterPrefix="@" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.AgroGEConnectionString.ConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="VW_FLETE_FULLTableAdapter" GeneratorDataComponentClassName="VW_FLETE_FULLTableAdapter" Name="VW_FLETE_FULL" UserDataComponentName="VW_FLETE_FULLTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="AgroGEConnectionString (Web.config)" DbObjectName="AgroGE.dbo.VW_FLETE_FULL" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT fle_keyfec, fle_keyfle, tpf_destpf, rtp_nomres, var_desvar, fle_observ, ubi_desubi, con_descon, dfl_canenv, cmp_descmp, rut_desrut, tra_destra, tpt_destpt, cam_descam, cam_placas, cam_numeco, ope_nombre, ope_apelli, rut_costou, dfl_pbruto, dfl_pstara, dfl_pstenv, dfl_ticket, fle_status, cul_descul, dfl_desori FROM dbo.VW_FLETE_FULL</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="fle_keyfec" DataSetColumn="fle_keyfec" />
+              <Mapping SourceColumn="fle_keyfle" DataSetColumn="fle_keyfle" />
+              <Mapping SourceColumn="tpf_destpf" DataSetColumn="tpf_destpf" />
+              <Mapping SourceColumn="rtp_nomres" DataSetColumn="rtp_nomres" />
+              <Mapping SourceColumn="var_desvar" DataSetColumn="var_desvar" />
+              <Mapping SourceColumn="fle_observ" DataSetColumn="fle_observ" />
+              <Mapping SourceColumn="ubi_desubi" DataSetColumn="ubi_desubi" />
+              <Mapping SourceColumn="con_descon" DataSetColumn="con_descon" />
+              <Mapping SourceColumn="dfl_canenv" DataSetColumn="dfl_canenv" />
+              <Mapping SourceColumn="cmp_descmp" DataSetColumn="cmp_descmp" />
+              <Mapping SourceColumn="rut_desrut" DataSetColumn="rut_desrut" />
+              <Mapping SourceColumn="tra_destra" DataSetColumn="tra_destra" />
+              <Mapping SourceColumn="tpt_destpt" DataSetColumn="tpt_destpt" />
+              <Mapping SourceColumn="cam_descam" DataSetColumn="cam_descam" />
+              <Mapping SourceColumn="cam_placas" DataSetColumn="cam_placas" />
+              <Mapping SourceColumn="cam_numeco" DataSetColumn="cam_numeco" />
+              <Mapping SourceColumn="ope_nombre" DataSetColumn="ope_nombre" />
+              <Mapping SourceColumn="ope_apelli" DataSetColumn="ope_apelli" />
+              <Mapping SourceColumn="rut_costou" DataSetColumn="rut_costou" />
+              <Mapping SourceColumn="dfl_pbruto" DataSetColumn="dfl_pbruto" />
+              <Mapping SourceColumn="dfl_pstara" DataSetColumn="dfl_pstara" />
+              <Mapping SourceColumn="dfl_pstenv" DataSetColumn="dfl_pstenv" />
+              <Mapping SourceColumn="dfl_ticket" DataSetColumn="dfl_ticket" />
+              <Mapping SourceColumn="fle_status" DataSetColumn="fle_status" />
+              <Mapping SourceColumn="cul_descul" DataSetColumn="cul_descul" />
+              <Mapping SourceColumn="dfl_desori" DataSetColumn="dfl_desori" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DataFletes" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DataFletes" msprop:Generator_UserDSName="DataFletes">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="VW_FLETES" msprop:Generator_TableClassName="VW_FLETESDataTable" msprop:Generator_TableVarName="tableVW_FLETES" msprop:Generator_RowChangedName="VW_FLETESRowChanged" msprop:Generator_TablePropName="VW_FLETES" msprop:Generator_RowDeletingName="VW_FLETESRowDeleting" msprop:Generator_RowChangingName="VW_FLETESRowChanging" msprop:Generator_RowEvHandlerName="VW_FLETESRowChangeEventHandler" msprop:Generator_RowDeletedName="VW_FLETESRowDeleted" msprop:Generator_RowClassName="VW_FLETESRow" msprop:Generator_UserTableName="VW_FLETES" msprop:Generator_RowEvArgName="VW_FLETESRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="fle_keyfle" msprop:Generator_ColumnVarNameInTable="columnfle_keyfle" msprop:Generator_ColumnPropNameInRow="fle_keyfle" msprop:Generator_ColumnPropNameInTable="fle_keyfleColumn" msprop:Generator_UserColumnName="fle_keyfle" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="VW_FLETE" msprop:Generator_TableClassName="VW_FLETEDataTable" msprop:Generator_TableVarName="tableVW_FLETE" msprop:Generator_RowChangedName="VW_FLETERowChanged" msprop:Generator_TablePropName="VW_FLETE" msprop:Generator_RowDeletingName="VW_FLETERowDeleting" msprop:Generator_RowChangingName="VW_FLETERowChanging" msprop:Generator_RowEvHandlerName="VW_FLETERowChangeEventHandler" msprop:Generator_RowDeletedName="VW_FLETERowDeleted" msprop:Generator_RowClassName="VW_FLETERow" msprop:Generator_UserTableName="VW_FLETE" msprop:Generator_RowEvArgName="VW_FLETERowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Row" msprop:Generator_ColumnVarNameInTable="columnRow" msprop:Generator_ColumnPropNameInRow="Row" msprop:Generator_ColumnPropNameInTable="RowColumn" msprop:Generator_UserColumnName="Row" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="VW_FLETE_FULL" msprop:Generator_TableClassName="VW_FLETE_FULLDataTable" msprop:Generator_TableVarName="tableVW_FLETE_FULL" msprop:Generator_TablePropName="VW_FLETE_FULL" msprop:Generator_RowDeletingName="VW_FLETE_FULLRowDeleting" msprop:Generator_RowChangingName="VW_FLETE_FULLRowChanging" msprop:Generator_RowEvHandlerName="VW_FLETE_FULLRowChangeEventHandler" msprop:Generator_RowDeletedName="VW_FLETE_FULLRowDeleted" msprop:Generator_UserTableName="VW_FLETE_FULL" msprop:Generator_RowChangedName="VW_FLETE_FULLRowChanged" msprop:Generator_RowEvArgName="VW_FLETE_FULLRowChangeEvent" msprop:Generator_RowClassName="VW_FLETE_FULLRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="fle_keyfec" msprop:Generator_ColumnVarNameInTable="columnfle_keyfec" msprop:Generator_ColumnPropNameInRow="fle_keyfec" msprop:Generator_ColumnPropNameInTable="fle_keyfecColumn" msprop:Generator_UserColumnName="fle_keyfec" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="fle_keyfle" msprop:Generator_ColumnVarNameInTable="columnfle_keyfle" msprop:Generator_ColumnPropNameInRow="fle_keyfle" msprop:Generator_ColumnPropNameInTable="fle_keyfleColumn" msprop:Generator_UserColumnName="fle_keyfle" type="xs:int" minOccurs="0" />
+              <xs:element name="tpf_destpf" msprop:Generator_ColumnVarNameInTable="columntpf_destpf" msprop:Generator_ColumnPropNameInRow="tpf_destpf" msprop:Generator_ColumnPropNameInTable="tpf_destpfColumn" msprop:Generator_UserColumnName="tpf_destpf" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="rtp_nomres" msprop:Generator_ColumnVarNameInTable="columnrtp_nomres" msprop:Generator_ColumnPropNameInRow="rtp_nomres" msprop:Generator_ColumnPropNameInTable="rtp_nomresColumn" msprop:Generator_UserColumnName="rtp_nomres" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="var_desvar" msprop:Generator_ColumnVarNameInTable="columnvar_desvar" msprop:Generator_ColumnPropNameInRow="var_desvar" msprop:Generator_ColumnPropNameInTable="var_desvarColumn" msprop:Generator_UserColumnName="var_desvar" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="fle_observ" msprop:Generator_ColumnVarNameInTable="columnfle_observ" msprop:Generator_ColumnPropNameInRow="fle_observ" msprop:Generator_ColumnPropNameInTable="fle_observColumn" msprop:Generator_UserColumnName="fle_observ" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ubi_desubi" msprop:Generator_ColumnVarNameInTable="columnubi_desubi" msprop:Generator_ColumnPropNameInRow="ubi_desubi" msprop:Generator_ColumnPropNameInTable="ubi_desubiColumn" msprop:Generator_UserColumnName="ubi_desubi" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="con_descon" msprop:Generator_ColumnVarNameInTable="columncon_descon" msprop:Generator_ColumnPropNameInRow="con_descon" msprop:Generator_ColumnPropNameInTable="con_desconColumn" msprop:Generator_UserColumnName="con_descon" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="dfl_canenv" msprop:Generator_ColumnVarNameInTable="columndfl_canenv" msprop:Generator_ColumnPropNameInRow="dfl_canenv" msprop:Generator_ColumnPropNameInTable="dfl_canenvColumn" msprop:Generator_UserColumnName="dfl_canenv" type="xs:short" />
+              <xs:element name="cmp_descmp" msprop:Generator_ColumnVarNameInTable="columncmp_descmp" msprop:Generator_ColumnPropNameInRow="cmp_descmp" msprop:Generator_ColumnPropNameInTable="cmp_descmpColumn" msprop:Generator_UserColumnName="cmp_descmp" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="rut_desrut" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnrut_desrut" msprop:Generator_ColumnPropNameInRow="rut_desrut" msprop:Generator_ColumnPropNameInTable="rut_desrutColumn" msprop:Generator_UserColumnName="rut_desrut" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="tra_destra" msprop:Generator_ColumnVarNameInTable="columntra_destra" msprop:Generator_ColumnPropNameInRow="tra_destra" msprop:Generator_ColumnPropNameInTable="tra_destraColumn" msprop:Generator_UserColumnName="tra_destra" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="tpt_destpt" msprop:Generator_ColumnVarNameInTable="columntpt_destpt" msprop:Generator_ColumnPropNameInRow="tpt_destpt" msprop:Generator_ColumnPropNameInTable="tpt_destptColumn" msprop:Generator_UserColumnName="tpt_destpt" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="cam_descam" msprop:Generator_ColumnVarNameInTable="columncam_descam" msprop:Generator_ColumnPropNameInRow="cam_descam" msprop:Generator_ColumnPropNameInTable="cam_descamColumn" msprop:Generator_UserColumnName="cam_descam" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="cam_placas" msprop:Generator_ColumnVarNameInTable="columncam_placas" msprop:Generator_ColumnPropNameInRow="cam_placas" msprop:Generator_ColumnPropNameInTable="cam_placasColumn" msprop:Generator_UserColumnName="cam_placas" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="cam_numeco" msprop:Generator_ColumnVarNameInTable="columncam_numeco" msprop:Generator_ColumnPropNameInRow="cam_numeco" msprop:Generator_ColumnPropNameInTable="cam_numecoColumn" msprop:Generator_UserColumnName="cam_numeco" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ope_nombre" msprop:Generator_ColumnVarNameInTable="columnope_nombre" msprop:Generator_ColumnPropNameInRow="ope_nombre" msprop:Generator_ColumnPropNameInTable="ope_nombreColumn" msprop:Generator_UserColumnName="ope_nombre" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ope_apelli" msprop:Generator_ColumnVarNameInTable="columnope_apelli" msprop:Generator_ColumnPropNameInRow="ope_apelli" msprop:Generator_ColumnPropNameInTable="ope_apelliColumn" msprop:Generator_UserColumnName="ope_apelli" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="60" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="rut_costou" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnrut_costou" msprop:Generator_ColumnPropNameInRow="rut_costou" msprop:Generator_ColumnPropNameInTable="rut_costouColumn" msprop:Generator_UserColumnName="rut_costou" type="xs:decimal" minOccurs="0" />
+              <xs:element name="dfl_pbruto" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columndfl_pbruto" msprop:Generator_ColumnPropNameInRow="dfl_pbruto" msprop:Generator_ColumnPropNameInTable="dfl_pbrutoColumn" msprop:Generator_UserColumnName="dfl_pbruto" type="xs:decimal" minOccurs="0" />
+              <xs:element name="dfl_pstara" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columndfl_pstara" msprop:Generator_ColumnPropNameInRow="dfl_pstara" msprop:Generator_ColumnPropNameInTable="dfl_pstaraColumn" msprop:Generator_UserColumnName="dfl_pstara" type="xs:decimal" minOccurs="0" />
+              <xs:element name="dfl_pstenv" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columndfl_pstenv" msprop:Generator_ColumnPropNameInRow="dfl_pstenv" msprop:Generator_ColumnPropNameInTable="dfl_pstenvColumn" msprop:Generator_UserColumnName="dfl_pstenv" type="xs:decimal" minOccurs="0" />
+              <xs:element name="dfl_ticket" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columndfl_ticket" msprop:Generator_ColumnPropNameInRow="dfl_ticket" msprop:Generator_ColumnPropNameInTable="dfl_ticketColumn" msprop:Generator_UserColumnName="dfl_ticket" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="fle_status" msprop:Generator_ColumnVarNameInTable="columnfle_status" msprop:Generator_ColumnPropNameInRow="fle_status" msprop:Generator_ColumnPropNameInTable="fle_statusColumn" msprop:Generator_UserColumnName="fle_status" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="cul_descul" msprop:Generator_ColumnVarNameInTable="columncul_descul" msprop:Generator_ColumnPropNameInRow="cul_descul" msprop:Generator_ColumnPropNameInTable="cul_desculColumn" msprop:Generator_UserColumnName="cul_descul" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="25" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="dfl_desori" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columndfl_desori" msprop:Generator_ColumnPropNameInRow="dfl_desori" msprop:Generator_ColumnPropNameInTable="dfl_desoriColumn" msprop:Generator_UserColumnName="dfl_desori" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1">
+      <xs:selector xpath=".//mstns:VW_FLETE_FULL" />
+      <xs:field xpath="mstns:fle_keyfle" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

@@ -39,7 +39,7 @@ Public Class Show
 
         Catch ex As Exception
             Tools.AddErrorLog(oUsr.Mis.Log, ex)
-
+            Session.Remove("INFORP")
         End Try
     End Sub
 
@@ -73,41 +73,39 @@ Public Class Show
 
     'Función para descargar archivos
     Protected Sub Transferir_Archivo(ByVal sArchivo As String, ByVal sFlName As String)
-        Response.ContentType = "application/octet-stream"
-        Response.AppendHeader("Content-Disposition", "attachment; filename=" + sFlName)
-
-        ' Write the file to the Response
-        Const bufferLength As Integer = 10000
-        Dim buffer As Byte() = New [Byte](bufferLength - 1) {}
-        Dim length As Integer = 0
-        Dim download As Stream = Nothing
-        Try
-            'Si el archivo existe en disco …
-            If IO.File.Exists(sArchivo) Then
-                download = New FileStream(sArchivo, FileMode.Open, FileAccess.Read)
-                Do
-                    If Response.IsClientConnected Then
-                        length = download.Read(buffer, 0, bufferLength)
-                        Response.OutputStream.Write(buffer, 0, length)
-                        buffer = New [Byte](bufferLength - 1) {}
-                    Else
-                        length = -1
-                    End If
-                Loop While length > 0
-                Response.Flush()
-                Response.[End]()
-            Else
-                Throw New Exception("Error: No se encontró el archivo.")
-            End If
-        Catch ex As Exception
-
-        Finally
-            If download IsNot Nothing Then
-                download.Close()
-            End If
-        End Try
+        'Si el archivo existe en disco …
+        If IO.File.Exists(sArchivo) Then
+            'Tamaño del buffer en bytes
+            Const LONGITUD_BUFFER As Integer = 1024
+            Dim DownloadStream As FileStream
+            Dim Leidos, FileSize As Long
+            Dim Buffer() As Byte = New Byte(LONGITUD_BUFFER) {}
+            DownloadStream = File.OpenRead(sArchivo)
+            FileSize = DownloadStream.Length
+            Response.Buffer = False
+            Response.ClearHeaders()
+            Response.ClearContent()
+            Response.ContentType = "application/octet-stream"
+            Response.AddHeader("Content-Length", FileSize)
+            Response.AddHeader("Content-Disposition", "attachment; filename=" + sFlName)
+            Leidos = DownloadStream.Read(Buffer, 0, Buffer.Length)
+            'Si lei bytes del archivo …
+            While (Leidos > 0)
+                'Y el cliente sigue conectado …
+                If (Context.Response.IsClientConnected) Then
+                    'Se le envian bytes
+                    Context.Response.OutputStream.Write(Buffer, 0, Leidos)
+                End If
+                'Re-inicializo el buffer
+                Array.Clear(Buffer, 0, Buffer.Length)
+                Leidos = DownloadStream.Read(Buffer, 0, Buffer.Length)
+            End While
+            Context.Response.Flush()
+            DownloadStream.Close()
+            Response.End()
+        Else
+            Throw New Exception("Error: No se encontró el archivo.")
+        End If
     End Sub
-
-
 
 End Class
