@@ -866,4 +866,14 @@ Public Class Fletes
             Tools.AddErrorLog(oUsr.Mis.Log, ex)
         End Try
     End Function
+
+    Private Sub txtCan_TextChanged(sender As Object, e As EventArgs) Handles txtCan.TextChanged
+        If IsNumeric(txtCan.Text) Then
+            If Not (txtCan.Text Mod 1 = 0) Then
+                txtCan.Text = ""
+            End If
+        Else
+            txtCan.Text = ""
+        End If
+    End Sub
 End Class

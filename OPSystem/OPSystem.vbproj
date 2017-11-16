@@ -47,6 +47,9 @@
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ClosedXML, Version=0.90.0.0, Culture=neutral, PublicKeyToken=fd1eb21b62ae805b, processorArchitecture=MSIL">
+      <HintPath>..\packages\ClosedXML.0.90.0\lib\net452\ClosedXML.dll</HintPath>
+    </Reference>
     <Reference Include="CRVsPackageLib, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
       <EmbedInteropTypes>True</EmbedInteropTypes>
       <HintPath>..\packages\CrystalReportsWeb.13.0.9.1312\lib\net40\CRVsPackageLib.dll</HintPath>
@@ -57,6 +60,12 @@
     <Reference Include="CrystalDecisions.Shared, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.Web, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="DocumentFormat.OpenXml, Version=2.7.2.0, Culture=neutral, PublicKeyToken=8fb06cb64d019a17, processorArchitecture=MSIL">
+      <HintPath>..\packages\DocumentFormat.OpenXml.2.7.2\lib\net40\DocumentFormat.OpenXml.dll</HintPath>
+    </Reference>
+    <Reference Include="FastMember.Signed, Version=1.0.0.9, Culture=neutral, PublicKeyToken=9e8f22703bef9a29, processorArchitecture=MSIL">
+      <HintPath>..\packages\FastMember.Signed.1.1.0\lib\net40\FastMember.Signed.dll</HintPath>
+    </Reference>
     <Reference Include="Infragistics.Olap.DataProvider.Adomd.Mvc, Version=5.17.1.2029, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
     <Reference Include="Infragistics4.WebUI.Documents.Reports.v17.1, Version=17.1.20171.2001, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
     <Reference Include="Infragistics4.WebUI.WebResizingExtender.v17.1, Version=17.1.20171.1001, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
@@ -425,7 +434,10 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Bundle.config" />
+    <Content Include="WEmpaque\AgregarBascula.aspx" />
     <Content Include="WEmpaque\Fletes.aspx" />
+    <Content Include="WEmpaque\ListadoFletesAjo.aspx" />
+    <Content Include="WEmpaque\RecepcionBascula.aspx" />
     <Content Include="WEmpaque\Show.aspx" />
     <Content Include="WSeguridades\SGEstructuraDetalle.aspx" />
     <Content Include="WSeguridades\SGEstructuras.aspx" />
@@ -673,11 +685,32 @@
     <Compile Include="Site.Mobile.Master.designer.vb">
       <DependentUpon>Site.Mobile.Master</DependentUpon>
     </Compile>
+    <Compile Include="WEmpaque\AgregarBascula.aspx.designer.vb">
+      <DependentUpon>AgregarBascula.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WEmpaque\AgregarBascula.aspx.vb">
+      <DependentUpon>AgregarBascula.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
     <Compile Include="WEmpaque\Fletes.aspx.designer.vb">
       <DependentUpon>Fletes.aspx</DependentUpon>
     </Compile>
     <Compile Include="WEmpaque\Fletes.aspx.vb">
       <DependentUpon>Fletes.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="WEmpaque\ListadoFletesAjo.aspx.designer.vb">
+      <DependentUpon>ListadoFletesAjo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WEmpaque\ListadoFletesAjo.aspx.vb">
+      <DependentUpon>ListadoFletesAjo.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="WEmpaque\RecepcionBascula.aspx.designer.vb">
+      <DependentUpon>RecepcionBascula.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WEmpaque\RecepcionBascula.aspx.vb">
+      <DependentUpon>RecepcionBascula.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="WEmpaque\Rp\CryFlete.vb">
