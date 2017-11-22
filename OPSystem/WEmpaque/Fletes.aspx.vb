@@ -285,7 +285,7 @@ Public Class Fletes
 
     Private Sub DDLCamíon_SelectedIndexChanged(sender As Object, e As EventArgs) Handles DDLCamíon.SelectedIndexChanged
         LoadOperadores(DDLCamíon.SelectedValue)
-        lblCamion.ToolTip = "Hola Mundo!!!"
+        'lblCamion.ToolTip = "Hola Mundo!!!"
     End Sub
 
     Private Sub BarEventos1_MsgEvent(sAcción As String) Handles BarEventos1.MsgEvent
@@ -651,6 +651,7 @@ Public Class Fletes
 
     Protected Sub Wizard1_FinishButtonClick(sender As Object, e As WizardNavigationEventArgs) Handles Wizard1.FinishButtonClick
         'Terminar el flete
+        SaveFlete(Val(lblFlete.ToolTip))
         CallReporte(txtResumen.Text)
     End Sub
 

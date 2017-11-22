@@ -7,7 +7,9 @@
     <script src="../JS/jquery-1.9.1.js"></script>
     <script src="../JS/jquery-ui.js"></script>
     <script src="../UI/i18n/datepicker-es.js"></script>
-    <script src="../UI/i18n/datepicker-es.js"></script>
+    <link href="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.9/themes/start/jquery-ui.css"
+    rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
     <script>
         $(function () {

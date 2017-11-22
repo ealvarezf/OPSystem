@@ -2,6 +2,7 @@
 
 <%@ Import Namespace="OPSystem" %>
 <%@ Import Namespace="Microsoft.AspNet.Identity" %>
+
 <!DOCTYPE html>
 
 <html lang="es">
@@ -10,16 +11,18 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><%: Page.Title %> - Mi aplicación ASP.NET</title>
-
+    <link href="default.css" rel="stylesheet" type="text/css" />
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/bundles/modernizr") %>
     </asp:PlaceHolder>
 
     <webopt:bundlereference runat="server" path="~/Content/css" />
-    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <link href="~/gpou1.ico" rel="shortcut icon" type="image/x-icon" />
 
 </head>
 <body>
+    <div id="header">   
+    </div>
     <form runat="server">
         <asp:ScriptManager runat="server">
             <Scripts>
@@ -92,10 +95,17 @@
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
             <hr />
-            <footer>
-                <p>&copy; <%: DateTime.Now.Year %> - Mi aplicación ASP.NET</p>
-            </footer>
+
         </div>
     </form>
+
+    <!-- Pie de pagina -->                
+    <div id="footer">
+      <p id="copy">©<%: DateTime.Now.Year %> Aguilares, SPR de RL&nbsp;&nbsp; Diseño por <a href="http://www.marketgraphic.com.mx">
+          Market Graphic
+	    <p align="right" id="feed"><a href="Inicio.aspx">Inicio</a> | 
+            <a href="Empresa.aspx">Empresas</a> | <a href="Servicio.aspx">Servicio</a> | 
+            <a href="Contacto.aspx">Contacto</a></p>
+    </div> 
 </body>
 </html>
