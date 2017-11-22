@@ -12,6 +12,10 @@ Public Class Show
 
     Private Sub Show_Init(sender As Object, e As EventArgs) Handles Me.Init
         oUsr = Session("Usr")
+        If oUsr Is Nothing Then
+            Context.GetOwinContext().Authentication.SignOut()
+            Response.Redirect("~/Account/Login")
+        End If
         oRp = Session("INFORP")
         ConfigureCrystalReports()
     End Sub

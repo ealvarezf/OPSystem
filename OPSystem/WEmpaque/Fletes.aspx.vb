@@ -18,6 +18,10 @@ Public Class Fletes
 
     Private Sub Fletes_Init(sender As Object, e As EventArgs) Handles Me.Init
         oUsr = Session("Usr")
+        If oUsr Is Nothing Then
+            Context.GetOwinContext().Authentication.SignOut()
+            Response.Redirect("~/Account/Login")
+        End If
         Dim user As String
         user = ValidaUser()
         If String.IsNullOrEmpty(user) Then

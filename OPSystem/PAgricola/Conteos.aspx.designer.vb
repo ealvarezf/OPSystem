@@ -11,7 +11,7 @@ Option Strict On
 Option Explicit On
 
 
-Partial Public Class AgregarBascula
+Partial Public Class Conteos
     
     '''<summary>
     '''Control pnlEventos.
@@ -32,13 +32,202 @@ Partial Public Class AgregarBascula
     Protected WithEvents BarEventos1 As Global.OPSystem.BarEventos
     
     '''<summary>
-    '''Control UpdatePanel1.
+    '''Control pnlFiltros.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents UpdatePanel1 As Global.System.Web.UI.UpdatePanel
+    Protected WithEvents pnlFiltros As Global.System.Web.UI.WebControls.Panel
+    
+    '''<summary>
+    '''Control Panel136.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Panel136 As Global.System.Web.UI.WebControls.Panel
+    
+    '''<summary>
+    '''Control lblFiltro0.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents lblFiltro0 As Global.System.Web.UI.WebControls.Label
+    
+    '''<summary>
+    '''Control Panel140.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Panel140 As Global.System.Web.UI.WebControls.Panel
+    
+    '''<summary>
+    '''Control Label17.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Label17 As Global.System.Web.UI.WebControls.Label
+    
+    '''<summary>
+    '''Control Panel152.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Panel152 As Global.System.Web.UI.WebControls.Panel
+    
+    '''<summary>
+    '''Control txtSearch_Desc.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents txtSearch_Desc As Global.System.Web.UI.WebControls.TextBox
+    
+    '''<summary>
+    '''Control Panel138.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Panel138 As Global.System.Web.UI.WebControls.Panel
+    
+    '''<summary>
+    '''Control Label18.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Label18 As Global.System.Web.UI.WebControls.Label
+    
+    '''<summary>
+    '''Control Panel147.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Panel147 As Global.System.Web.UI.WebControls.Panel
+    
+    '''<summary>
+    '''Control txtSearch_Emp.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents txtSearch_Emp As Global.System.Web.UI.WebControls.TextBox
+    
+    '''<summary>
+    '''Control Panel139.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Panel139 As Global.System.Web.UI.WebControls.Panel
+    
+    '''<summary>
+    '''Control Label8.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Label8 As Global.System.Web.UI.WebControls.Label
+    
+    '''<summary>
+    '''Control Panel142.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Panel142 As Global.System.Web.UI.WebControls.Panel
+    
+    '''<summary>
+    '''Control txtSearch_Alm.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents txtSearch_Alm As Global.System.Web.UI.WebControls.TextBox
+    
+    '''<summary>
+    '''Control Panel141.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Panel141 As Global.System.Web.UI.WebControls.Panel
+    
+    '''<summary>
+    '''Control Label19.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Label19 As Global.System.Web.UI.WebControls.Label
+    
+    '''<summary>
+    '''Control Panel144.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Panel144 As Global.System.Web.UI.WebControls.Panel
+    
+    '''<summary>
+    '''Control txtSearch_Fecha.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents txtSearch_Fecha As Global.System.Web.UI.WebControls.TextBox
+    
+    '''<summary>
+    '''Control Panel145.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Panel145 As Global.System.Web.UI.WebControls.Panel
+    
+    '''<summary>
+    '''Control imgBtnAplicaFiltro.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents imgBtnAplicaFiltro As Global.System.Web.UI.WebControls.Button
+    
+    '''<summary>
+    '''Control imgbtnCancelaFiltro.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents imgbtnCancelaFiltro As Global.System.Web.UI.WebControls.Button
     
     '''<summary>
     '''Control pnlAdd.
@@ -50,103 +239,67 @@ Partial Public Class AgregarBascula
     Protected WithEvents pnlAdd As Global.System.Web.UI.WebControls.Panel
     
     '''<summary>
-    '''Control Panel6.
+    '''Control pnlformulario.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents Panel6 As Global.System.Web.UI.WebControls.Panel
+    Protected WithEvents pnlformulario As Global.System.Web.UI.WebControls.Panel
     
     '''<summary>
-    '''Control pnlAcción0.
+    '''Control pnlAcción.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents pnlAcción0 As Global.System.Web.UI.WebControls.Panel
+    Protected WithEvents pnlAcción As Global.System.Web.UI.WebControls.Panel
     
     '''<summary>
-    '''Control lblFiltro.
+    '''Control lblAcción.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents lblFiltro As Global.System.Web.UI.WebControls.Label
+    Protected WithEvents lblAcción As Global.System.Web.UI.WebControls.Label
     
     '''<summary>
-    '''Control Panel7.
+    '''Control PnlKey.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents Panel7 As Global.System.Web.UI.WebControls.Panel
+    Protected WithEvents PnlKey As Global.System.Web.UI.WebControls.Panel
     
     '''<summary>
-    '''Control Label3.
+    '''Control lbl_ConteoID.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents Label3 As Global.System.Web.UI.WebControls.Label
+    Protected WithEvents lbl_ConteoID As Global.System.Web.UI.WebControls.Label
     
     '''<summary>
-    '''Control Panel8.
+    '''Control pnlDes.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents Panel8 As Global.System.Web.UI.WebControls.Panel
+    Protected WithEvents pnlDes As Global.System.Web.UI.WebControls.Panel
     
     '''<summary>
-    '''Control lbl_empresa_id.
+    '''Control lbl_NoConteo.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents lbl_empresa_id As Global.System.Web.UI.WebControls.TextBox
-    
-    '''<summary>
-    '''Control Panel16.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents Panel16 As Global.System.Web.UI.WebControls.Panel
-    
-    '''<summary>
-    '''Control Label5.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents Label5 As Global.System.Web.UI.WebControls.Label
-    
-    '''<summary>
-    '''Control Panel19.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents Panel19 As Global.System.Web.UI.WebControls.Panel
-    
-    '''<summary>
-    '''Control lbl_empresa_nombre.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents lbl_empresa_nombre As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents lbl_NoConteo As Global.System.Web.UI.WebControls.Label
     
     '''<summary>
     '''Control Panel1.
@@ -176,13 +329,31 @@ Partial Public Class AgregarBascula
     Protected WithEvents Panel2 As Global.System.Web.UI.WebControls.Panel
     
     '''<summary>
-    '''Control lbl_idf.
+    '''Control txt_Descripción.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents lbl_idf As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents txt_Descripción As Global.System.Web.UI.WebControls.TextBox
+    
+    '''<summary>
+    '''Control Panel153.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Panel153 As Global.System.Web.UI.WebControls.Panel
+    
+    '''<summary>
+    '''Control RFV_DESC.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents RFV_DESC As Global.System.Web.UI.WebControls.RequiredFieldValidator
     
     '''<summary>
     '''Control Panel3.
@@ -212,103 +383,31 @@ Partial Public Class AgregarBascula
     Protected WithEvents Panel4 As Global.System.Web.UI.WebControls.Panel
     
     '''<summary>
-    '''Control lbl_proceso_id.
+    '''Control txt_Fecha.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents lbl_proceso_id As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents txt_Fecha As Global.System.Web.UI.WebControls.TextBox
     
     '''<summary>
-    '''Control Panel5.
+    '''Control Panel154.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents Panel5 As Global.System.Web.UI.WebControls.Panel
+    Protected WithEvents Panel154 As Global.System.Web.UI.WebControls.Panel
     
     '''<summary>
-    '''Control Label4.
+    '''Control RFV_FECHA.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents Label4 As Global.System.Web.UI.WebControls.Label
-    
-    '''<summary>
-    '''Control Panel9.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents Panel9 As Global.System.Web.UI.WebControls.Panel
-    
-    '''<summary>
-    '''Control lbl_proceso_nombre.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents lbl_proceso_nombre As Global.System.Web.UI.WebControls.TextBox
-    
-    '''<summary>
-    '''Control Panel10.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents Panel10 As Global.System.Web.UI.WebControls.Panel
-    
-    '''<summary>
-    '''Control Label6.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents Label6 As Global.System.Web.UI.WebControls.Label
-    
-    '''<summary>
-    '''Control Panel11.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents Panel11 As Global.System.Web.UI.WebControls.Panel
-    
-    '''<summary>
-    '''Control txt_fecha.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents txt_fecha As Global.System.Web.UI.WebControls.TextBox
-    
-    '''<summary>
-    '''Control Panel12.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents Panel12 As Global.System.Web.UI.WebControls.Panel
-    
-    '''<summary>
-    '''Control Label7.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents Label7 As Global.System.Web.UI.WebControls.Label
+    Protected WithEvents RFV_FECHA As Global.System.Web.UI.WebControls.RequiredFieldValidator
     
     '''<summary>
     '''Control Panel14.
@@ -320,13 +419,13 @@ Partial Public Class AgregarBascula
     Protected WithEvents Panel14 As Global.System.Web.UI.WebControls.Panel
     
     '''<summary>
-    '''Control txt_peso_bruto.
+    '''Control Label7.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents txt_peso_bruto As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents Label7 As Global.System.Web.UI.WebControls.Label
     
     '''<summary>
     '''Control Panel15.
@@ -338,148 +437,130 @@ Partial Public Class AgregarBascula
     Protected WithEvents Panel15 As Global.System.Web.UI.WebControls.Panel
     
     '''<summary>
-    '''Control Label8.
+    '''Control DDL_EMPRESA.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents Label8 As Global.System.Web.UI.WebControls.Label
+    Protected WithEvents DDL_EMPRESA As Global.System.Web.UI.WebControls.DropDownList
     
     '''<summary>
-    '''Control Panel17.
+    '''Control Panel155.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents Panel17 As Global.System.Web.UI.WebControls.Panel
+    Protected WithEvents Panel155 As Global.System.Web.UI.WebControls.Panel
     
     '''<summary>
-    '''Control txt_peso_tara.
+    '''Control RFV_EMPRESA.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents txt_peso_tara As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents RFV_EMPRESA As Global.System.Web.UI.WebControls.CompareValidator
     
     '''<summary>
-    '''Control Panel18.
+    '''Control Panel150.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents Panel18 As Global.System.Web.UI.WebControls.Panel
+    Protected WithEvents Panel150 As Global.System.Web.UI.WebControls.Panel
     
     '''<summary>
-    '''Control Label9.
+    '''Control Label20.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents Label9 As Global.System.Web.UI.WebControls.Label
+    Protected WithEvents Label20 As Global.System.Web.UI.WebControls.Label
     
     '''<summary>
-    '''Control Panel20.
+    '''Control Panel151.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents Panel20 As Global.System.Web.UI.WebControls.Panel
+    Protected WithEvents Panel151 As Global.System.Web.UI.WebControls.Panel
     
     '''<summary>
-    '''Control lbl_peso_neto.
+    '''Control UpdatePanel1.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents lbl_peso_neto As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents UpdatePanel1 As Global.System.Web.UI.UpdatePanel
     
     '''<summary>
-    '''Control Panel21.
+    '''Control DDL_ALMACEN.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents Panel21 As Global.System.Web.UI.WebControls.Panel
+    Protected WithEvents DDL_ALMACEN As Global.System.Web.UI.WebControls.DropDownList
     
     '''<summary>
-    '''Control Label10.
+    '''Control Panel156.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents Label10 As Global.System.Web.UI.WebControls.Label
+    Protected WithEvents Panel156 As Global.System.Web.UI.WebControls.Panel
     
     '''<summary>
-    '''Control Panel22.
+    '''Control RFV_ALMACEN.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents Panel22 As Global.System.Web.UI.WebControls.Panel
+    Protected WithEvents RFV_ALMACEN As Global.System.Web.UI.WebControls.CompareValidator
     
     '''<summary>
-    '''Control lbl_fecha_registro.
+    '''Control Panel5.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents lbl_fecha_registro As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents Panel5 As Global.System.Web.UI.WebControls.Panel
     
     '''<summary>
-    '''Control UpdatePanel3.
+    '''Control ImgBtnAceptar.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents UpdatePanel3 As Global.System.Web.UI.UpdatePanel
+    Protected WithEvents ImgBtnAceptar As Global.System.Web.UI.WebControls.ImageButton
     
     '''<summary>
-    '''Control pnlParametros.
+    '''Control ImgBtnCancelar.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents pnlParametros As Global.System.Web.UI.WebControls.Panel
+    Protected WithEvents ImgBtnCancelar As Global.System.Web.UI.WebControls.ImageButton
     
     '''<summary>
-    '''Control Label11.
+    '''Control pnlListar.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents Label11 As Global.System.Web.UI.WebControls.Label
-    
-    '''<summary>
-    '''Control GridView3.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents GridView3 As Global.System.Web.UI.WebControls.GridView
-    
-    '''<summary>
-    '''Control GridView1.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents GridView1 As Global.System.Web.UI.WebControls.GridView
+    Protected WithEvents pnlListar As Global.System.Web.UI.WebControls.Panel
     
     '''<summary>
     '''Control UpdatePanel2.
@@ -491,47 +572,38 @@ Partial Public Class AgregarBascula
     Protected WithEvents UpdatePanel2 As Global.System.Web.UI.UpdatePanel
     
     '''<summary>
-    '''Control pnlGuia.
+    '''Control Panel130.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents pnlGuia As Global.System.Web.UI.WebControls.Panel
+    Protected WithEvents Panel130 As Global.System.Web.UI.WebControls.Panel
     
     '''<summary>
-    '''Control Label12.
+    '''Control Label4.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents Label12 As Global.System.Web.UI.WebControls.Label
+    Protected WithEvents Label4 As Global.System.Web.UI.WebControls.Label
     
     '''<summary>
-    '''Control GridView2.
+    '''Control lblkeyconteo.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents GridView2 As Global.System.Web.UI.WebControls.GridView
+    Protected WithEvents lblkeyconteo As Global.System.Web.UI.WebControls.Label
     
     '''<summary>
-    '''Control imgBtnAplicaFiltro.
+    '''Control GridView1.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents imgBtnAplicaFiltro As Global.System.Web.UI.WebControls.ImageButton
-    
-    '''<summary>
-    '''Control imgbtnCancelaFiltro.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents imgbtnCancelaFiltro As Global.System.Web.UI.WebControls.ImageButton
+    Protected WithEvents GridView1 As Global.System.Web.UI.WebControls.GridView
 End Class

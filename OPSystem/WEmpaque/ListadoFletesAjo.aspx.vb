@@ -10,6 +10,10 @@ Public Class ListadoFletesAjo
 
     Private Sub ListadoFletesAjo_Init(sender As Object, e As EventArgs) Handles Me.Init
         oUsr = Session("Usr")
+        If oUsr Is Nothing Then
+            Context.GetOwinContext().Authentication.SignOut()
+            Response.Redirect("~/Account/Login")
+        End If
     End Sub
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load

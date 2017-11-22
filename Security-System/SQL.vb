@@ -837,7 +837,12 @@ End Class
 
 Public Class InfoRp
     Public Property Reporte As String
+    Public Property Response As String
     Public Property Nombre As String
+    Public Property Descripcion As String
+    Public Property Envia As String
+    Public Property ikey As Integer
+    Public Property skey As String
     Public Property InfoFiltros As String
     Public Property Parametros As New ColeccionPrmSql
     Public Property OD As New DataSet

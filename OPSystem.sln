@@ -9,6 +9,8 @@ Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Security-System", "Security
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Sys-Empaque", "Sys-Empaque\Sys-Empaque.vbproj", "{56D1B589-CC6D-43A0-98C9-EDECCA7D664E}"
 EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "DataAgro", "DataAgro\DataAgro.vbproj", "{2D98B549-E322-471C-BF48-D0A793EF783A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{56D1B589-CC6D-43A0-98C9-EDECCA7D664E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{56D1B589-CC6D-43A0-98C9-EDECCA7D664E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{56D1B589-CC6D-43A0-98C9-EDECCA7D664E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2D98B549-E322-471C-BF48-D0A793EF783A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D98B549-E322-471C-BF48-D0A793EF783A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D98B549-E322-471C-BF48-D0A793EF783A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D98B549-E322-471C-BF48-D0A793EF783A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

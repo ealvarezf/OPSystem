@@ -30,7 +30,9 @@
     </script>
 
     <div class="panel-body">
-        
+        <asp:Panel ID="pnlEventos" runat="server">
+            <uc1:BarEventos ID="BarEventos1" runat="server" />
+        </asp:Panel>
 
     <asp:UpdatePanel ID="UpdatePanel1" runat="server" >
             <Triggers>

@@ -63,6 +63,9 @@
     <Reference Include="DocumentFormat.OpenXml, Version=2.7.2.0, Culture=neutral, PublicKeyToken=8fb06cb64d019a17, processorArchitecture=MSIL">
       <HintPath>..\packages\DocumentFormat.OpenXml.2.7.2\lib\net40\DocumentFormat.OpenXml.dll</HintPath>
     </Reference>
+    <Reference Include="EPPlus, Version=4.1.0.0, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPPlus.4.1.0\lib\net40\EPPlus.dll</HintPath>
+    </Reference>
     <Reference Include="FastMember.Signed, Version=1.0.0.9, Culture=neutral, PublicKeyToken=9e8f22703bef9a29, processorArchitecture=MSIL">
       <HintPath>..\packages\FastMember.Signed.1.1.0\lib\net40\FastMember.Signed.dll</HintPath>
     </Reference>
@@ -88,6 +91,9 @@
     <Reference Include="Infragistics45.WebUI.WebScheduleDataProvider.v17.1, Version=17.1.20171.2001, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.3\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+    <Reference Include="OfficeOpenXml.Extends, Version=1.0.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\OfficeOpenXml.Extends.1.0.3.0\lib\net40\OfficeOpenXml.Extends.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -261,6 +267,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="ControlUser\BarEventos.ascx" />
     <Content Include="ControlUser\BarEventosOld.ascx" />
+    <Content Include="ControlUser\BarFlete.ascx" />
     <Content Include="CSS\demos.css" />
     <Content Include="CSS\jquery-ui.css" />
     <Content Include="CSS\jquery.ui.all.css" />
@@ -296,6 +303,7 @@
     <Content Include="OP\RegProduccion.aspx" />
     <Content Include="OP\Web.config" />
     <Content Include="INV\Web.config" />
+    <Content Include="PAgricola\Web.config" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Imagenes\OP1.jpg" />
     <Content Include="Imagenes\produccion.png" />
@@ -325,6 +333,13 @@
     <Content Include="Img\xml.png" />
     <Content Include="OP\ListOrdenes.aspx" />
     <Content Include="OP\OrdenesProduccion.aspx" />
+    <Content Include="PAgricola\Conteos.aspx" />
+    <Content Include="PAgricola\DetalleConteo.aspx" />
+    <Content Include="PAgricola\InventarioGrl.aspx" />
+    <Content Include="PAgricola\SalidaDevolucion.aspx" />
+    <Content Include="PAgricola\SalidaSemilla.aspx" />
+    <Content Include="PAgricola\SalSemillaDetalle.aspx" />
+    <Content Include="PAgricola\Show.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -589,6 +604,13 @@
       <DependentUpon>BarEventosOld.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="ControlUser\BarFlete.ascx.designer.vb">
+      <DependentUpon>BarFlete.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="ControlUser\BarFlete.ascx.vb">
+      <DependentUpon>BarFlete.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="ControlUser\Userc.vb" />
     <Compile Include="Default.aspx.vb">
       <SubType>ASPXCodeBehind</SubType>
@@ -661,6 +683,55 @@
     </Compile>
     <Compile Include="OP\RegProduccion.aspx.vb">
       <DependentUpon>RegProduccion.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="PAgricola\Conteos.aspx.designer.vb">
+      <DependentUpon>Conteos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PAgricola\Conteos.aspx.vb">
+      <DependentUpon>Conteos.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="PAgricola\DetalleConteo.aspx.designer.vb">
+      <DependentUpon>DetalleConteo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PAgricola\DetalleConteo.aspx.vb">
+      <DependentUpon>DetalleConteo.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="PAgricola\InventarioGrl.aspx.designer.vb">
+      <DependentUpon>InventarioGrl.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PAgricola\InventarioGrl.aspx.vb">
+      <DependentUpon>InventarioGrl.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="PAgricola\SalidaDevolucion.aspx.designer.vb">
+      <DependentUpon>SalidaDevolucion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PAgricola\SalidaDevolucion.aspx.vb">
+      <DependentUpon>SalidaDevolucion.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="PAgricola\SalidaSemilla.aspx.designer.vb">
+      <DependentUpon>SalidaSemilla.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PAgricola\SalidaSemilla.aspx.vb">
+      <DependentUpon>SalidaSemilla.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="PAgricola\SalSemillaDetalle.aspx.designer.vb">
+      <DependentUpon>SalSemillaDetalle.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PAgricola\SalSemillaDetalle.aspx.vb">
+      <DependentUpon>SalSemillaDetalle.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="PAgricola\Show.aspx.designer.vb">
+      <DependentUpon>Show.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PAgricola\Show.aspx.vb">
+      <DependentUpon>Show.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="Site.Master.designer.vb">
@@ -820,8 +891,13 @@
   <ItemGroup>
     <Folder Include="Accesos\" />
     <Folder Include="App_Data\" />
+    <Folder Include="PAgricola\Rp\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DataAgro\DataAgro.vbproj">
+      <Project>{2d98b549-e322-471c-bf48-d0a793ef783a}</Project>
+      <Name>DataAgro</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Security-System\Security-System.vbproj">
       <Project>{f18a5127-07f0-4a51-96e2-dfc4e6fd3ede}</Project>
       <Name>Security-System</Name>

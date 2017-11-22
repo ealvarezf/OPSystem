@@ -10,7 +10,6 @@ Public Class SiteMaster
     Private oUsr As UserLogin
     Protected Friend sInfo As String = String.Empty
     Protected Sub Page_Init(sender As Object, e As EventArgs)
-
         oUsr = Session("Usr")
         If Not oUsr Is Nothing Then
             If Request.RawUrl.Split("/").Length > 0 Then

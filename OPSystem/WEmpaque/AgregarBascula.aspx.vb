@@ -28,6 +28,10 @@ Public Class AgregarBascula
 
     Private Sub AgregarBascula_Init(sender As Object, e As EventArgs) Handles Me.Init
         oUsr = Session("Usr")
+        If oUsr Is Nothing Then
+            Context.GetOwinContext().Authentication.SignOut()
+            Response.Redirect("~/Account/Login")
+        End If
         If Not Request.Params("Key") Is Nothing Then
             iKey = Request.Params("Key").ToString
             ArriKey = iKey.Split(",")
