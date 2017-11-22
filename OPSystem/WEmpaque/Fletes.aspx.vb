@@ -45,7 +45,7 @@ Public Class Fletes
         If Not Session("INFORP") Is Nothing Then
             Dim oRp As InfoRp = Session("INFORP")
             If oRp.Enviado Then
-                Response.Write("<script>window.open('Show.aspx','_blank');</script>")
+                Response.Write("<script>window.open('ShowFlete.aspx','_blank');</script>")
             End If
         End If
     End Sub

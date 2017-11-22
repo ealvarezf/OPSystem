@@ -4,7 +4,7 @@ Imports Security_System
 Imports System.IO
 Imports System.Net
 
-Public Class Show
+Public Class ShowFlete
     Inherits System.Web.UI.Page
     Private customerReport As ReportDocument
     Dim oUsr As UserLogin

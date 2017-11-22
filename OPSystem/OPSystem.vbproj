@@ -303,7 +303,19 @@
     <Content Include="OP\RegProduccion.aspx" />
     <Content Include="OP\Web.config" />
     <Content Include="INV\Web.config" />
+    <Content Include="PAgricola\ShowReport.aspx" />
     <Content Include="PAgricola\Web.config" />
+    <Content Include="PAgricola\Rp\DataAgro.xsc">
+      <DependentUpon>DataAgro.xsd</DependentUpon>
+    </Content>
+    <None Include="PAgricola\Rp\DataAgro.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataAgro.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="PAgricola\Rp\DataAgro.xss">
+      <DependentUpon>DataAgro.xsd</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Imagenes\OP1.jpg" />
     <Content Include="Imagenes\produccion.png" />
@@ -453,7 +465,7 @@
     <Content Include="WEmpaque\Fletes.aspx" />
     <Content Include="WEmpaque\ListadoFletesAjo.aspx" />
     <Content Include="WEmpaque\RecepcionBascula.aspx" />
-    <Content Include="WEmpaque\Show.aspx" />
+    <Content Include="WEmpaque\ShowFlete.aspx" />
     <Content Include="WSeguridades\SGEstructuraDetalle.aspx" />
     <Content Include="WSeguridades\SGEstructuras.aspx" />
     <Content Include="WSeguridades\SGFunciones.aspx" />
@@ -706,6 +718,29 @@
       <DependentUpon>InventarioGrl.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
+    <Compile Include="PAgricola\Rp\CryFlete.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CryFlete.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PAgricola\Rp\CrySalidaSemilla.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CrySalidaSemilla.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PAgricola\Rp\CrySalSemilla.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CrySalSemilla.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PAgricola\Rp\DataAgro.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataAgro.xsd</DependentUpon>
+    </Compile>
     <Compile Include="PAgricola\SalidaDevolucion.aspx.designer.vb">
       <DependentUpon>SalidaDevolucion.aspx</DependentUpon>
     </Compile>
@@ -732,6 +767,13 @@
     </Compile>
     <Compile Include="PAgricola\Show.aspx.vb">
       <DependentUpon>Show.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="PAgricola\ShowReport.aspx.designer.vb">
+      <DependentUpon>ShowReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PAgricola\ShowReport.aspx.vb">
+      <DependentUpon>ShowReport.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="Site.Master.designer.vb">
@@ -790,11 +832,11 @@
       <DependentUpon>CryFlete.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="WEmpaque\Show.aspx.designer.vb">
-      <DependentUpon>Show.aspx</DependentUpon>
+    <Compile Include="WEmpaque\ShowFlete.aspx.designer.vb">
+      <DependentUpon>ShowFlete.aspx</DependentUpon>
     </Compile>
-    <Compile Include="WEmpaque\Show.aspx.vb">
-      <DependentUpon>Show.aspx</DependentUpon>
+    <Compile Include="WEmpaque\ShowFlete.aspx.vb">
+      <DependentUpon>ShowFlete.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="WSeguridades\SGEstructuraDetalle.aspx.designer.vb">
@@ -861,6 +903,18 @@
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="PAgricola\Rp\CryFlete.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CryFlete.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PAgricola\Rp\CrySalidaSemilla.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CrySalidaSemilla.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PAgricola\Rp\CrySalSemilla.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CrySalSemilla.vb</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="WEmpaque\Rp\CryFlete.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>CryFlete.vb</LastGenOutput>
@@ -891,7 +945,6 @@
   <ItemGroup>
     <Folder Include="Accesos\" />
     <Folder Include="App_Data\" />
-    <Folder Include="PAgricola\Rp\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataAgro\DataAgro.vbproj">

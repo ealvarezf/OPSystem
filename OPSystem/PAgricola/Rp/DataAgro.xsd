@@ -1,0 +1,272 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DataAgro" targetNamespace="http://tempuri.org/DataAgro.xsd" xmlns:mstns="http://tempuri.org/DataAgro.xsd" xmlns="http://tempuri.org/DataAgro.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="AgroGemPrdConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="AgroGemPrdConnectionString (Web.config)" ParameterPrefix="@" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.AgroGemPrdConnectionString.ConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="VW_SALIDA_SEMILLATableAdapter" GeneratorDataComponentClassName="VW_SALIDA_SEMILLATableAdapter" Name="VW_SALIDA_SEMILLA" UserDataComponentName="VW_SALIDA_SEMILLATableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="AgroGemPrdConnectionString (Web.config)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        SM.SalidaSemillaIDF, SM.SalidaSemillaFecha, SM.SalidaSemillaOrigen, VC.ProductoID, VC.ProductoNombre, VC.ProductoLote, SSD.SalidaSemillaCantidad, SSD.SalidaSemillaPeso, SSD.SalidaSemillaDensidad, 
+                         SSD.SalidaSemillaObservaciones, SM.SalidaSemillaElaboro, SM.SalidaSemillaTransportista, SM.SalidaSemillaEncargadoSiembra, REVERSE(LEFT(REVERSE(VC.ProductoLote), CHARINDEX('-', 
+                         REVERSE(VC.ProductoLote)) - 1)) AS Tamaño, SM.SalidaSemillaLotes, dbo.Get_NoFlete_Sal(SM.SalidaSemillaIDF) AS FleteID, dbo.Get_Agricultor(SM.SalidaSemillaIDF) AS Agricultor, 
+                         SSM.DevProductoNombre AS Origen, SSM.DevSemillaCantidad, SSM.DevSemillaObservaciones, UO.UbicacionNombre AS Alm_OrgD, SSM.DevSemillaAlmacen, UD.UbicacionNombre AS Alm_DestD, 
+                         CASE WHEN SSM.SalidaSemillaIDF IS NOT NULL THEN REVERSE(LEFT(REVERSE(VC.ProductoLote), CHARINDEX('-', REVERSE(VC.ProductoLote)) - 1)) ELSE '' END AS TamañoDev, dbo.Get_Settings(N'RREF', 1) 
+                         AS REVISION, dbo.Get_Settings(N'RCCP', 1) AS CODIGO, dbo.Get_Settings(N'RFEC', 1) AS FECHA
+FROM            SALIDASEMILLA AS SM LEFT OUTER JOIN
+                         SALIDASEMILLADETALLE AS SSD ON SM.SalidaSemillaIDF = SSD.SalidaSemillaIDF LEFT OUTER JOIN
+                         VW_CONSTRUIR_CONTEOS AS VC ON VC.ProductoID = SSD.ProductoID AND VC.ProductoLote = SSD.ProductoLote AND VC.EmpresaID = SM.EmpresaID AND VC.UbicacionID = SM.UbicacionID LEFT OUTER JOIN
+                         SALIDASEMILLADEVOLUCION AS SSM ON SSD.SalidaSemillaIDF = SSM.SalidaSemillaIDF AND SSM.DevProductoID = SSD.ProductoID AND SSM.DevProductoLote = SSD.ProductoLote LEFT OUTER JOIN
+                         PRODUCTOS AS P ON P.EmpresaID = SM.EmpresaID AND P.ProductoID = SSM.DevProductoID LEFT OUTER JOIN
+                         ALMACENES AS AO ON AO.EmpresaID = SM.EmpresaDestinoID AND AO.UbicacionID = SM.UbicacionDestinoID LEFT OUTER JOIN
+                         EMPRESAS AS EO ON EO.EmpresaID = AO.EmpresaID LEFT OUTER JOIN
+                         UBICACIONES AS UO ON UO.UbicacionID = AO.UbicacionID LEFT OUTER JOIN
+                         ALMACENES AS AD ON AD.EmpresaID = SM.EmpresaID AND AD.UbicacionID = SSM.DevSemillaAlmacen LEFT OUTER JOIN
+                         EMPRESAS AS ED ON ED.EmpresaID = AD.EmpresaID LEFT OUTER JOIN
+                         UBICACIONES AS UD ON UD.UbicacionID = AD.UbicacionID
+WHERE        (NOT (VC.ProductoLote IS NULL))</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="SalidaSemillaIDF" DataSetColumn="SalidaSemillaIDF" />
+              <Mapping SourceColumn="SalidaSemillaFecha" DataSetColumn="SalidaSemillaFecha" />
+              <Mapping SourceColumn="SalidaSemillaOrigen" DataSetColumn="SalidaSemillaOrigen" />
+              <Mapping SourceColumn="ProductoID" DataSetColumn="ProductoID" />
+              <Mapping SourceColumn="ProductoNombre" DataSetColumn="ProductoNombre" />
+              <Mapping SourceColumn="ProductoLote" DataSetColumn="ProductoLote" />
+              <Mapping SourceColumn="SalidaSemillaPeso" DataSetColumn="SalidaSemillaPeso" />
+              <Mapping SourceColumn="SalidaSemillaDensidad" DataSetColumn="SalidaSemillaDensidad" />
+              <Mapping SourceColumn="SalidaSemillaObservaciones" DataSetColumn="SalidaSemillaObservaciones" />
+              <Mapping SourceColumn="SalidaSemillaElaboro" DataSetColumn="SalidaSemillaElaboro" />
+              <Mapping SourceColumn="SalidaSemillaTransportista" DataSetColumn="SalidaSemillaTransportista" />
+              <Mapping SourceColumn="SalidaSemillaEncargadoSiembra" DataSetColumn="SalidaSemillaEncargadoSiembra" />
+              <Mapping SourceColumn="Tamaño" DataSetColumn="Tamaño" />
+              <Mapping SourceColumn="SalidaSemillaLotes" DataSetColumn="SalidaSemillaLotes" />
+              <Mapping SourceColumn="REVISION" DataSetColumn="REVISION" />
+              <Mapping SourceColumn="CODIGO" DataSetColumn="CODIGO" />
+              <Mapping SourceColumn="FECHA" DataSetColumn="FECHA" />
+              <Mapping SourceColumn="FleteID" DataSetColumn="FleteID" />
+              <Mapping SourceColumn="Agricultor" DataSetColumn="Agricultor" />
+              <Mapping SourceColumn="Origen" DataSetColumn="Origen" />
+              <Mapping SourceColumn="DevSemillaCantidad" DataSetColumn="DevSemillaCantidad" />
+              <Mapping SourceColumn="DevSemillaObservaciones" DataSetColumn="DevSemillaObservaciones" />
+              <Mapping SourceColumn="Alm_OrgD" DataSetColumn="Alm_OrgD" />
+              <Mapping SourceColumn="DevSemillaAlmacen" DataSetColumn="DevSemillaAlmacen" />
+              <Mapping SourceColumn="Alm_DestD" DataSetColumn="Alm_DestD" />
+              <Mapping SourceColumn="SalidaSemillaCantidad" DataSetColumn="SalidaSemillaCantidad1" />
+              <Mapping SourceColumn="TamañoDev" DataSetColumn="TamañoDev" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DataAgro" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DataAgro" msprop:Generator_UserDSName="DataAgro">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="VW_SALIDA_SEMILLA" msprop:Generator_TableClassName="VW_SALIDA_SEMILLADataTable" msprop:Generator_TableVarName="tableVW_SALIDA_SEMILLA" msprop:Generator_TablePropName="VW_SALIDA_SEMILLA" msprop:Generator_RowDeletingName="VW_SALIDA_SEMILLARowDeleting" msprop:Generator_RowChangingName="VW_SALIDA_SEMILLARowChanging" msprop:Generator_RowEvHandlerName="VW_SALIDA_SEMILLARowChangeEventHandler" msprop:Generator_RowDeletedName="VW_SALIDA_SEMILLARowDeleted" msprop:Generator_UserTableName="VW_SALIDA_SEMILLA" msprop:Generator_RowChangedName="VW_SALIDA_SEMILLARowChanged" msprop:Generator_RowEvArgName="VW_SALIDA_SEMILLARowChangeEvent" msprop:Generator_RowClassName="VW_SALIDA_SEMILLARow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="SalidaSemillaIDF" msprop:Generator_ColumnVarNameInTable="columnSalidaSemillaIDF" msprop:Generator_ColumnPropNameInRow="SalidaSemillaIDF" msprop:Generator_ColumnPropNameInTable="SalidaSemillaIDFColumn" msprop:Generator_UserColumnName="SalidaSemillaIDF" type="xs:int" />
+              <xs:element name="SalidaSemillaFecha" msprop:Generator_ColumnVarNameInTable="columnSalidaSemillaFecha" msprop:Generator_ColumnPropNameInRow="SalidaSemillaFecha" msprop:Generator_ColumnPropNameInTable="SalidaSemillaFechaColumn" msprop:Generator_UserColumnName="SalidaSemillaFecha" type="xs:dateTime" />
+              <xs:element name="SalidaSemillaOrigen" msprop:Generator_ColumnVarNameInTable="columnSalidaSemillaOrigen" msprop:Generator_ColumnPropNameInRow="SalidaSemillaOrigen" msprop:Generator_ColumnPropNameInTable="SalidaSemillaOrigenColumn" msprop:Generator_UserColumnName="SalidaSemillaOrigen">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ProductoID" msprop:Generator_ColumnVarNameInTable="columnProductoID" msprop:Generator_ColumnPropNameInRow="ProductoID" msprop:Generator_ColumnPropNameInTable="ProductoIDColumn" msprop:Generator_UserColumnName="ProductoID" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ProductoNombre" msprop:Generator_ColumnVarNameInTable="columnProductoNombre" msprop:Generator_ColumnPropNameInRow="ProductoNombre" msprop:Generator_ColumnPropNameInTable="ProductoNombreColumn" msprop:Generator_UserColumnName="ProductoNombre" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="40" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ProductoLote" msprop:Generator_ColumnVarNameInTable="columnProductoLote" msprop:Generator_ColumnPropNameInRow="ProductoLote" msprop:Generator_ColumnPropNameInTable="ProductoLoteColumn" msprop:Generator_UserColumnName="ProductoLote" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="40" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SalidaSemillaCantidad" msprop:Generator_ColumnVarNameInTable="columnSalidaSemillaCantidad" msprop:Generator_ColumnPropNameInRow="SalidaSemillaCantidad" msprop:Generator_ColumnPropNameInTable="SalidaSemillaCantidadColumn" msprop:Generator_UserColumnName="SalidaSemillaCantidad" type="xs:short" minOccurs="0" />
+              <xs:element name="SalidaSemillaPeso" msprop:Generator_ColumnVarNameInTable="columnSalidaSemillaPeso" msprop:Generator_ColumnPropNameInRow="SalidaSemillaPeso" msprop:Generator_ColumnPropNameInTable="SalidaSemillaPesoColumn" msprop:Generator_UserColumnName="SalidaSemillaPeso" type="xs:decimal" minOccurs="0" />
+              <xs:element name="SalidaSemillaDensidad" msprop:Generator_ColumnVarNameInTable="columnSalidaSemillaDensidad" msprop:Generator_ColumnPropNameInRow="SalidaSemillaDensidad" msprop:Generator_ColumnPropNameInTable="SalidaSemillaDensidadColumn" msprop:Generator_UserColumnName="SalidaSemillaDensidad" type="xs:decimal" minOccurs="0" />
+              <xs:element name="SalidaSemillaObservaciones" msprop:Generator_ColumnVarNameInTable="columnSalidaSemillaObservaciones" msprop:Generator_ColumnPropNameInRow="SalidaSemillaObservaciones" msprop:Generator_ColumnPropNameInTable="SalidaSemillaObservacionesColumn" msprop:Generator_UserColumnName="SalidaSemillaObservaciones" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SalidaSemillaElaboro" msprop:Generator_ColumnVarNameInTable="columnSalidaSemillaElaboro" msprop:Generator_ColumnPropNameInRow="SalidaSemillaElaboro" msprop:Generator_ColumnPropNameInTable="SalidaSemillaElaboroColumn" msprop:Generator_UserColumnName="SalidaSemillaElaboro">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SalidaSemillaTransportista" msprop:Generator_ColumnVarNameInTable="columnSalidaSemillaTransportista" msprop:Generator_ColumnPropNameInRow="SalidaSemillaTransportista" msprop:Generator_ColumnPropNameInTable="SalidaSemillaTransportistaColumn" msprop:Generator_UserColumnName="SalidaSemillaTransportista" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SalidaSemillaEncargadoSiembra" msprop:Generator_ColumnVarNameInTable="columnSalidaSemillaEncargadoSiembra" msprop:Generator_ColumnPropNameInRow="SalidaSemillaEncargadoSiembra" msprop:Generator_ColumnPropNameInTable="SalidaSemillaEncargadoSiembraColumn" msprop:Generator_UserColumnName="SalidaSemillaEncargadoSiembra">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Tamaño" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnTamaño" msprop:Generator_ColumnPropNameInRow="Tamaño" msprop:Generator_ColumnPropNameInTable="TamañoColumn" msprop:Generator_UserColumnName="Tamaño" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="40" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SalidaSemillaLotes" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnSalidaSemillaLotes" msprop:Generator_ColumnPropNameInRow="SalidaSemillaLotes" msprop:Generator_ColumnPropNameInTable="SalidaSemillaLotesColumn" msprop:Generator_UserColumnName="SalidaSemillaLotes" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1000" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="REVISION" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnREVISION" msprop:Generator_ColumnPropNameInRow="REVISION" msprop:Generator_ColumnPropNameInTable="REVISIONColumn" msprop:Generator_UserColumnName="REVISION" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CODIGO" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnCODIGO" msprop:Generator_ColumnPropNameInRow="CODIGO" msprop:Generator_ColumnPropNameInTable="CODIGOColumn" msprop:Generator_UserColumnName="CODIGO" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="FECHA" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnFECHA" msprop:Generator_ColumnPropNameInRow="FECHA" msprop:Generator_ColumnPropNameInTable="FECHAColumn" msprop:Generator_UserColumnName="FECHA" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="FleteID" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnFleteID" msprop:Generator_ColumnPropNameInRow="FleteID" msprop:Generator_ColumnPropNameInTable="FleteIDColumn" msprop:Generator_UserColumnName="FleteID" type="xs:int" minOccurs="0" />
+              <xs:element name="Agricultor" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnAgricultor" msprop:Generator_ColumnPropNameInRow="Agricultor" msprop:Generator_ColumnPropNameInTable="AgricultorColumn" msprop:Generator_UserColumnName="Agricultor" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Origen" msprop:Generator_ColumnVarNameInTable="columnOrigen" msprop:Generator_ColumnPropNameInRow="Origen" msprop:Generator_ColumnPropNameInTable="OrigenColumn" msprop:Generator_UserColumnName="Origen" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="40" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="DevSemillaCantidad" msprop:Generator_ColumnVarNameInTable="columnDevSemillaCantidad" msprop:Generator_ColumnPropNameInRow="DevSemillaCantidad" msprop:Generator_ColumnPropNameInTable="DevSemillaCantidadColumn" msprop:Generator_UserColumnName="DevSemillaCantidad" type="xs:decimal" minOccurs="0" />
+              <xs:element name="DevSemillaObservaciones" msprop:Generator_ColumnVarNameInTable="columnDevSemillaObservaciones" msprop:Generator_ColumnPropNameInRow="DevSemillaObservaciones" msprop:Generator_ColumnPropNameInTable="DevSemillaObservacionesColumn" msprop:Generator_UserColumnName="DevSemillaObservaciones" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Alm_OrgD" msprop:Generator_ColumnVarNameInTable="columnAlm_OrgD" msprop:Generator_ColumnPropNameInRow="Alm_OrgD" msprop:Generator_ColumnPropNameInTable="Alm_OrgDColumn" msprop:Generator_UserColumnName="Alm_OrgD" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="DevSemillaAlmacen" msprop:Generator_ColumnVarNameInTable="columnDevSemillaAlmacen" msprop:Generator_ColumnPropNameInRow="DevSemillaAlmacen" msprop:Generator_ColumnPropNameInTable="DevSemillaAlmacenColumn" msprop:Generator_UserColumnName="DevSemillaAlmacen" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Alm_DestD" msprop:Generator_ColumnVarNameInTable="columnAlm_DestD" msprop:Generator_ColumnPropNameInRow="Alm_DestD" msprop:Generator_ColumnPropNameInTable="Alm_DestDColumn" msprop:Generator_UserColumnName="Alm_DestD" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SalidaSemillaCantidad1" msdata:Caption="SalidaSemillaCantidad" msprop:Generator_ColumnVarNameInTable="columnSalidaSemillaCantidad1" msprop:Generator_ColumnPropNameInRow="SalidaSemillaCantidad1" msprop:Generator_ColumnPropNameInTable="SalidaSemillaCantidad1Column" msprop:Generator_UserColumnName="SalidaSemillaCantidad1" type="xs:decimal" minOccurs="0" />
+              <xs:element name="TamañoDev" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnTamañoDev" msprop:Generator_ColumnPropNameInRow="TamañoDev" msprop:Generator_ColumnPropNameInTable="TamañoDevColumn" msprop:Generator_UserColumnName="TamañoDev" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="40" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="VW_FLETE" msprop:Generator_TableClassName="VW_FLETEDataTable" msprop:Generator_TableVarName="tableVW_FLETE" msprop:Generator_RowChangedName="VW_FLETERowChanged" msprop:Generator_TablePropName="VW_FLETE" msprop:Generator_RowDeletingName="VW_FLETERowDeleting" msprop:Generator_RowChangingName="VW_FLETERowChanging" msprop:Generator_RowEvHandlerName="VW_FLETERowChangeEventHandler" msprop:Generator_RowDeletedName="VW_FLETERowDeleted" msprop:Generator_RowClassName="VW_FLETERow" msprop:Generator_UserTableName="VW_FLETE" msprop:Generator_RowEvArgName="VW_FLETERowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Row" msprop:Generator_ColumnVarNameInTable="columnRow" msprop:Generator_ColumnPropNameInRow="Row" msprop:Generator_ColumnPropNameInTable="RowColumn" msprop:Generator_UserColumnName="Row" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="VW_SALIDA_SEMILLA2" msprop:Generator_TableClassName="VW_SALIDA_SEMILLA2DataTable" msprop:Generator_TableVarName="tableVW_SALIDA_SEMILLA2" msprop:Generator_TablePropName="VW_SALIDA_SEMILLA2" msprop:Generator_RowDeletingName="VW_SALIDA_SEMILLA2RowDeleting" msprop:Generator_RowChangingName="VW_SALIDA_SEMILLA2RowChanging" msprop:Generator_RowEvHandlerName="VW_SALIDA_SEMILLA2RowChangeEventHandler" msprop:Generator_RowDeletedName="VW_SALIDA_SEMILLA2RowDeleted" msprop:Generator_UserTableName="VW_SALIDA_SEMILLA2" msprop:Generator_RowChangedName="VW_SALIDA_SEMILLA2RowChanged" msprop:Generator_RowEvArgName="VW_SALIDA_SEMILLA2RowChangeEvent" msprop:Generator_RowClassName="VW_SALIDA_SEMILLA2Row">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="SalidaSemillaIDF" msprop:Generator_ColumnVarNameInTable="columnSalidaSemillaIDF" msprop:Generator_ColumnPropNameInRow="SalidaSemillaIDF" msprop:Generator_ColumnPropNameInTable="SalidaSemillaIDFColumn" msprop:Generator_UserColumnName="SalidaSemillaIDF" type="xs:int" minOccurs="0" />
+              <xs:element name="SalidaSemillaFecha" msprop:Generator_ColumnVarNameInTable="columnSalidaSemillaFecha" msprop:Generator_ColumnPropNameInRow="SalidaSemillaFecha" msprop:Generator_ColumnPropNameInTable="SalidaSemillaFechaColumn" msprop:Generator_UserColumnName="SalidaSemillaFecha" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="SalidaSemillaOrigen" msprop:Generator_ColumnVarNameInTable="columnSalidaSemillaOrigen" msprop:Generator_ColumnPropNameInRow="SalidaSemillaOrigen" msprop:Generator_ColumnPropNameInTable="SalidaSemillaOrigenColumn" msprop:Generator_UserColumnName="SalidaSemillaOrigen" type="xs:string" minOccurs="0" />
+              <xs:element name="ProductoID" msprop:Generator_ColumnVarNameInTable="columnProductoID" msprop:Generator_ColumnPropNameInRow="ProductoID" msprop:Generator_ColumnPropNameInTable="ProductoIDColumn" msprop:Generator_UserColumnName="ProductoID" type="xs:string" minOccurs="0" />
+              <xs:element name="ProductoNombre" msprop:Generator_ColumnVarNameInTable="columnProductoNombre" msprop:Generator_ColumnPropNameInRow="ProductoNombre" msprop:Generator_ColumnPropNameInTable="ProductoNombreColumn" msprop:Generator_UserColumnName="ProductoNombre" type="xs:string" minOccurs="0" />
+              <xs:element name="ProductoLote" msprop:Generator_ColumnVarNameInTable="columnProductoLote" msprop:Generator_ColumnPropNameInRow="ProductoLote" msprop:Generator_ColumnPropNameInTable="ProductoLoteColumn" msprop:Generator_UserColumnName="ProductoLote" type="xs:string" minOccurs="0" />
+              <xs:element name="SalidaSemillaCantidad" msprop:Generator_ColumnVarNameInTable="columnSalidaSemillaCantidad" msprop:Generator_ColumnPropNameInRow="SalidaSemillaCantidad" msprop:Generator_ColumnPropNameInTable="SalidaSemillaCantidadColumn" msprop:Generator_UserColumnName="SalidaSemillaCantidad" type="xs:decimal" minOccurs="0" />
+              <xs:element name="SalidaSemillaPeso" msprop:Generator_ColumnVarNameInTable="columnSalidaSemillaPeso" msprop:Generator_ColumnPropNameInRow="SalidaSemillaPeso" msprop:Generator_ColumnPropNameInTable="SalidaSemillaPesoColumn" msprop:Generator_UserColumnName="SalidaSemillaPeso" type="xs:decimal" minOccurs="0" />
+              <xs:element name="SalidaSemillaDensidad" msprop:Generator_ColumnVarNameInTable="columnSalidaSemillaDensidad" msprop:Generator_ColumnPropNameInRow="SalidaSemillaDensidad" msprop:Generator_ColumnPropNameInTable="SalidaSemillaDensidadColumn" msprop:Generator_UserColumnName="SalidaSemillaDensidad" type="xs:decimal" minOccurs="0" />
+              <xs:element name="SalidaSemillaObservaciones" msprop:Generator_ColumnVarNameInTable="columnSalidaSemillaObservaciones" msprop:Generator_ColumnPropNameInRow="SalidaSemillaObservaciones" msprop:Generator_ColumnPropNameInTable="SalidaSemillaObservacionesColumn" msprop:Generator_UserColumnName="SalidaSemillaObservaciones" type="xs:string" minOccurs="0" />
+              <xs:element name="SalidaSemillaElaboro" msprop:Generator_ColumnVarNameInTable="columnSalidaSemillaElaboro" msprop:Generator_ColumnPropNameInRow="SalidaSemillaElaboro" msprop:Generator_ColumnPropNameInTable="SalidaSemillaElaboroColumn" msprop:Generator_UserColumnName="SalidaSemillaElaboro" type="xs:string" minOccurs="0" />
+              <xs:element name="SalidaSemillaTransportista" msprop:Generator_ColumnVarNameInTable="columnSalidaSemillaTransportista" msprop:Generator_ColumnPropNameInRow="SalidaSemillaTransportista" msprop:Generator_ColumnPropNameInTable="SalidaSemillaTransportistaColumn" msprop:Generator_UserColumnName="SalidaSemillaTransportista" type="xs:string" minOccurs="0" />
+              <xs:element name="SalidaSemillaEncargadoSiembra" msprop:Generator_ColumnVarNameInTable="columnSalidaSemillaEncargadoSiembra" msprop:Generator_ColumnPropNameInRow="SalidaSemillaEncargadoSiembra" msprop:Generator_ColumnPropNameInTable="SalidaSemillaEncargadoSiembraColumn" msprop:Generator_UserColumnName="SalidaSemillaEncargadoSiembra" type="xs:string" minOccurs="0" />
+              <xs:element name="Tamaño" msprop:Generator_ColumnVarNameInTable="columnTamaño" msprop:Generator_ColumnPropNameInRow="Tamaño" msprop:Generator_ColumnPropNameInTable="TamañoColumn" msprop:Generator_UserColumnName="Tamaño" type="xs:string" minOccurs="0" />
+              <xs:element name="FleteID" msprop:Generator_ColumnVarNameInTable="columnFleteID" msprop:Generator_ColumnPropNameInRow="FleteID" msprop:Generator_ColumnPropNameInTable="FleteIDColumn" msprop:Generator_UserColumnName="FleteID" type="xs:int" minOccurs="0" />
+              <xs:element name="Agricultor" msprop:Generator_ColumnVarNameInTable="columnAgricultor" msprop:Generator_ColumnPropNameInRow="Agricultor" msprop:Generator_ColumnPropNameInTable="AgricultorColumn" msprop:Generator_UserColumnName="Agricultor" type="xs:string" minOccurs="0" />
+              <xs:element name="DevProductoNombre" msprop:Generator_ColumnVarNameInTable="columnDevProductoNombre" msprop:Generator_ColumnPropNameInRow="DevProductoNombre" msprop:Generator_ColumnPropNameInTable="DevProductoNombreColumn" msprop:Generator_UserColumnName="DevProductoNombre" type="xs:string" minOccurs="0" />
+              <xs:element name="DevSemillaCantidad" msprop:Generator_ColumnVarNameInTable="columnDevSemillaCantidad" msprop:Generator_ColumnPropNameInRow="DevSemillaCantidad" msprop:Generator_ColumnPropNameInTable="DevSemillaCantidadColumn" msprop:Generator_UserColumnName="DevSemillaCantidad" type="xs:string" minOccurs="0" />
+              <xs:element name="DevSemillaObservaciones" msprop:Generator_ColumnVarNameInTable="columnDevSemillaObservaciones" msprop:Generator_ColumnPropNameInRow="DevSemillaObservaciones" msprop:Generator_ColumnPropNameInTable="DevSemillaObservacionesColumn" msprop:Generator_UserColumnName="DevSemillaObservaciones" type="xs:string" minOccurs="0" />
+              <xs:element name="Alm_OrgD" msprop:Generator_ColumnVarNameInTable="columnAlm_OrgD" msprop:Generator_ColumnPropNameInRow="Alm_OrgD" msprop:Generator_ColumnPropNameInTable="Alm_OrgDColumn" msprop:Generator_UserColumnName="Alm_OrgD" type="xs:string" minOccurs="0" />
+              <xs:element name="DevSemillaAlmacen" msprop:Generator_ColumnVarNameInTable="columnDevSemillaAlmacen" msprop:Generator_ColumnPropNameInRow="DevSemillaAlmacen" msprop:Generator_ColumnPropNameInTable="DevSemillaAlmacenColumn" msprop:Generator_UserColumnName="DevSemillaAlmacen" type="xs:string" minOccurs="0" />
+              <xs:element name="Alm_DestD" msprop:Generator_ColumnVarNameInTable="columnAlm_DestD" msprop:Generator_ColumnPropNameInRow="Alm_DestD" msprop:Generator_ColumnPropNameInTable="Alm_DestDColumn" msprop:Generator_UserColumnName="Alm_DestD" type="xs:string" minOccurs="0" />
+              <xs:element name="REVISION" msprop:Generator_ColumnVarNameInTable="columnREVISION" msprop:Generator_ColumnPropNameInRow="REVISION" msprop:Generator_ColumnPropNameInTable="REVISIONColumn" msprop:Generator_UserColumnName="REVISION" type="xs:string" minOccurs="0" />
+              <xs:element name="CODIGO" msprop:Generator_ColumnVarNameInTable="columnCODIGO" msprop:Generator_ColumnPropNameInRow="CODIGO" msprop:Generator_ColumnPropNameInTable="CODIGOColumn" msprop:Generator_UserColumnName="CODIGO" type="xs:string" minOccurs="0" />
+              <xs:element name="FECHA" msprop:Generator_ColumnVarNameInTable="columnFECHA" msprop:Generator_ColumnPropNameInRow="FECHA" msprop:Generator_ColumnPropNameInTable="FECHAColumn" msprop:Generator_UserColumnName="FECHA" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
