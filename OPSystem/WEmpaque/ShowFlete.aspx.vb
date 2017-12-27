@@ -78,7 +78,7 @@ Public Class ShowFlete
     'Función para descargar archivos
     Protected Sub Transferir_Archivo(ByVal sArchivo As String, ByVal sFlName As String)
         'Si el archivo existe en disco …
-        If IO.File.Exists(sArchivo) Then
+        If File.Exists(sArchivo) Then
             'Tamaño del buffer en bytes
             Const LONGITUD_BUFFER As Integer = 1024
             Dim DownloadStream As FileStream

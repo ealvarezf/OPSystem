@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/Site.Master" CodeBehind="OrdenesProduccion.aspx.vb" Inherits="OPSystem.OrdenesProduccion" %>
-<%@ Register assembly="Infragistics45.Web.v17.1, Version=17.1.20171.2001, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb" namespace="Infragistics.Web.UI.NavigationControls" tagprefix="ig" %>
+<%@ Register assembly="Infragistics45.Web.v17.1, Version=17.1.20171.2024, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb" namespace="Infragistics.Web.UI.NavigationControls" tagprefix="ig" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <div class="panel-body">
         <table style="width:100%;">

@@ -1,13 +1,13 @@
 ﻿<%@ Page Language="vb" AutoEventWireup="false" CodeBehind="RegGasto.aspx.vb" Inherits="OPSystem.RegGasto" %>
 
-<%@ Register Assembly="Infragistics45.Web.v17.1, Version=17.1.20171.2001, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb" Namespace="Infragistics.Web.UI" TagPrefix="ig" %>
+<%@ Register Assembly="Infragistics45.Web.v17.1, Version=17.1.20171.2024, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb" Namespace="Infragistics.Web.UI" TagPrefix="ig" %>
 
 <%@ Register src="../ControlUser/BarEventos.ascx" tagname="BarEventos" tagprefix="uc1" %>
 
-<%@ Register assembly="Infragistics45.Web.v17.1, Version=17.1.20171.2001, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb" namespace="Infragistics.Web.UI.GridControls" tagprefix="ig" %>
+<%@ Register assembly="Infragistics45.Web.v17.1, Version=17.1.20171.2024, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb" namespace="Infragistics.Web.UI.GridControls" tagprefix="ig" %>
 
-<%@ Register assembly="Infragistics45.Web.v17.1, Version=17.1.20171.2001, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb" namespace="Infragistics.Web.UI.ListControls" tagprefix="ig" %>
-<%@ Register assembly="Infragistics45.Web.v17.1, Version=17.1.20171.2001, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb" namespace="Infragistics.Web.UI.EditorControls" tagprefix="ig" %>
+<%@ Register assembly="Infragistics45.Web.v17.1, Version=17.1.20171.2024, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb" namespace="Infragistics.Web.UI.ListControls" tagprefix="ig" %>
+<%@ Register assembly="Infragistics45.Web.v17.1, Version=17.1.20171.2024, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb" namespace="Infragistics.Web.UI.EditorControls" tagprefix="ig" %>
 
 <!DOCTYPE html>
 

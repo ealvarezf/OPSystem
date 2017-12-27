@@ -9,10 +9,6 @@ Public Class RecepcionBascula
 
     Private Sub RecepcionBascula_Init(sender As Object, e As EventArgs) Handles Me.Init
         oUsr = Session("Usr")
-        If oUsr Is Nothing Then
-            Context.GetOwinContext().Authentication.SignOut()
-            Response.Redirect("~/Account/Login")
-        End If
         Session.Add("Proceso", 1)
         Session.Add("Folios", 5)
     End Sub

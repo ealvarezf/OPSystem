@@ -39,6 +39,10 @@ Public Class BarEventos
 
     Private Sub BarEventos_Init(sender As Object, e As EventArgs) Handles Me.Init
         oUsr = Session("Usr")
+        If oUsr Is Nothing Then
+            Context.GetOwinContext().Authentication.SignOut()
+            Response.Redirect("~/Account/Login", True)
+        End If
     End Sub
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         Dim oSql As New AppPermisos(oUsr)
