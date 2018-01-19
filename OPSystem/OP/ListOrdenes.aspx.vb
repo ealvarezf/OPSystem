@@ -2,7 +2,7 @@
 Imports Infragistics.Web.UI.GridControls.WebDataGrid
 Imports Security_System
 Public Class ListOrdenes
-    Inherits System.Web.UI.Page
+    Inherits Page
     Private Ds As New DataSet
     Private oUsr As UserLogin
     Private oCs As New ColeccionPrmSql
@@ -13,7 +13,7 @@ Public Class ListOrdenes
         SqlDataSource1.ConnectionString = CnxDefault.GetDataStore
         sKeyProceso = Request.Params("pid")
     End Sub
-    Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+    Protected Sub Page_Load(ByVal sender As Object, ByVal e As EventArgs) Handles Me.Load
         If Not IsPostBack Then
             LoadComboProcesos()
             LoadComboTurnos()
@@ -338,5 +338,4 @@ Public Class ListOrdenes
                 lblOrigen.Text = ddl_Origen.SelectedItem.Text
         End Select
     End Sub
-
 End Class

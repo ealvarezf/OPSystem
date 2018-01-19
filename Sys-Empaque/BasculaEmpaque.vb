@@ -129,7 +129,7 @@ Public Class SQLCargarDatos
         Get
             Return " select v.VariedadID, c.CultivoNombre + ' - ' + v.VariedadNombre as VariedadNombre " &
                    " from VARIEDAD v join CULTIVO c on v.CultivoID=c.CultivoID " &
-                   " where VariedadStatus='A' and c.CultivoNombre like '%ajo%' " &
+                   " where VariedadStatus='A' and v.CultivoID IN (1,11) " &
                    " order by VariedadNombre "
         End Get
     End Property
@@ -217,6 +217,16 @@ Public Class SQLInsertarDatos
     Public ReadOnly Property UpdFolio As String
         Get
             Return "update FOLIOS set FolioValor=@IDF where FolioID=@FolID"
+        End Get
+    End Property
+
+    Public ReadOnly Property InsInventario As String
+        Get
+            Return " INSERT INTO MOVIMIENTOS (EmpresaID, UbicacionID, ProductoID, MovimientoClasifica, MovimientoDocumento, " &
+                   " MovimientoFechaDoc, MovimientoCantidad, MovimientoPeso, MovimientoLote, MovimientoLoteHis, " &
+                   " MovimientoObs, MovimientoTipo, OrigenMovID) " &
+                   " VALUES(@IDEmp,@UbicaID,@ProdID,@MovClas,@IDF,@fecha,@Cantidad,@PNeto, " &
+                   " dbo.Building_Lote(@ProcesoID,@TablaID,@VarID,@fechaLote,@Extra),@MovLoteHis,@MovObs,@MovTipo,@OrigenMovID) "
         End Get
     End Property
 End Class

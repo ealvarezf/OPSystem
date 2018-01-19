@@ -18,6 +18,9 @@
         function ErrorInsert() {
             alert('¡Error al insertar datos. Vuelva a Intentarlo!')
         }
+        function ErrorInsertInv() {
+            alert('¡Error al acualizar inventario. Vuelva a Intentarlo!')
+        }
         function ErrorUpdate() {
             alert('¡Error al actualizar datos. Vuelva a Intentarlo!')
         }

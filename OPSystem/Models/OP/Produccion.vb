@@ -18,6 +18,26 @@ Public Class SQLInventarios
         End Get
     End Property
 
+    Public ReadOnly Property ValorCultivo() As String
+        Get
+            Return " SELECT CultivoID FROM VARIEDAD WHERE VARIEDADID = @variedad "
+        End Get
+    End Property
+
+    Public ReadOnly Property ValorUbicacionDestino() As String
+        Get
+            Return " SELECT UbicacionDestinoID FROM PROCESOS WHERE PROCESOID = @proceso "
+        End Get
+    End Property
+
+    Public ReadOnly Property ValorSize() As String
+        Get
+            Return " SELECT ClasificaSizeNombre FROM FLETECOSECHA FC JOIN BASCULAGUIA BG ON FC.CosechaID = BG.GuiaID " &
+                   " AND FC.VariedadID = BG.VariedadID AND FC.UbicacionID = BG.UbicacionID " &
+                   " JOIN ClasificaSize CS on CS.ClasificaSizeID = FC.ClasificaSizeID " &
+                   " WHERE FC.UbicacionID = @ubi AND FC.VariedadID = @vari AND FC.FleteID = @flete "
+        End Get
+    End Property
 End Class
 Public Class SQLDetalleGasto
     Inherits SQL

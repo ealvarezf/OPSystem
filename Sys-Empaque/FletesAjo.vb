@@ -102,7 +102,7 @@ Public Class SQLFletes
         Get
             Return " select v.VariedadID, c.CultivoNombre + ' - ' + v.VariedadNombre as VariedadNombre " &
                    " from VARIEDAD v join CULTIVO c on v.CultivoID=c.CultivoID " &
-                   " where VariedadStatus='A' and c.CultivoNombre like '%ajo%' " &
+                   " where VariedadStatus='A' and v.CultivoID IN (1,11) " &
                    " order by VariedadNombre "
         End Get
     End Property

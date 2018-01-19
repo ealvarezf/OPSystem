@@ -28,13 +28,17 @@ Public Class AgregarBascula
 
     Private Sub AgregarBascula_Init(sender As Object, e As EventArgs) Handles Me.Init
         oUsr = Session("Usr")
+
+        'OBTIENE LOS PARAMETROS NECESARIOS PARA SABER SI ES INSERT, UPDATE O DELETE
         If Not Request.Params("Key") Is Nothing Then
             iKey = Request.Params("Key").ToString
             ArriKey = iKey.Split(",")
         End If
         If Not IsPostBack Then
-            Me.Form.Attributes.Add("autocomplete", "off")
+            Me.Form.Attributes.Add("autocomplete", "off") 'EVITA QUE EL NAVEGADOR GUARDE DATOS
 
+            'EN CASO DE QUE QUIERAN ACCEDER DIRECTAMENTE A LA PAGINA Y NO PROPORCIONEN VALORES
+            'REDIRECCIONA
             If ArriKey Is Nothing Then
                 Response.Redirect("~/WEmpaque/RecepcionBascula")
             End If
@@ -88,6 +92,9 @@ Public Class AgregarBascula
                     CargarDatosUpd(ArriKey(1), ArriKey(2))
                     LoadLista()
                     LoadListaGuia()
+                    txt_fecha.Enabled = False
+                    txt_peso_bruto.Enabled = False
+                    txt_peso_tara.Enabled = False
             End Select
         End If
     End Sub
@@ -137,6 +144,7 @@ Public Class AgregarBascula
         End If
     End Sub
 
+    'OBTIENE EL SIGUIENTE VALOR PARA IDF
     Private Function Folio() As Integer
         Dim oSql As New SQLCargarDatos(oUsr)
         Dim oCs As New ColeccionPrmSql
@@ -153,6 +161,7 @@ Public Class AgregarBascula
         End Try
     End Function
 
+    'CARGA LOS DATOS PRINCIPALES AL INSERTAR
     Private Sub CargarDatos()
         Dim oSql As New SQLCargarDatos(oUsr)
         Dim oCs As New ColeccionPrmSql
@@ -175,6 +184,7 @@ Public Class AgregarBascula
         End Try
     End Sub
 
+    'CARGA LOS DATOS PRINCIPALES AL ACTUALIZAR O ELIMINAR
     Private Sub CargarDatosUpd(ByVal IDE As Integer, ByVal IDF As Integer)
         Dim oSql As New SQLCargarDatos(oUsr)
         Dim oCs As New ColeccionPrmSql
@@ -203,6 +213,7 @@ Public Class AgregarBascula
         End Try
     End Sub
 
+    'LLENA AUTOMATICAMENTE LOS GRIDS DE PARAMETROS, YA SEA CON TEXTBOX O CON DROP DOWN LIST
     Private Sub LoadLista()
         Dim oSql As New SQLCargarDatos(oUsr)
         Dim oCs As New ColeccionPrmSql
@@ -247,28 +258,42 @@ Public Class AgregarBascula
     'End Sub
 
     Protected Sub imgBtnAplicaFiltro_Click(sender As Object, e As ImageClickEventArgs) Handles imgBtnAplicaFiltro.Click
+        'BOTON PARA FINALIZAR LA OPERACIÓN
+        'CONDICION PARA VALIDAR QUE NO HAYA VALORES EN CERO O SIN VALOR EN TODOS LOS FORMULARIOS
         If CType(txt_peso_bruto.Text, Double) = 0 Or CType(txt_peso_tara.Text, Double) = 0 Or ValidaDDL() Or ValidaTXT() Or ValidaGuia() Then
             ScriptManager.RegisterStartupScript(Me, GetType(Page), "ValidaForms", "ValidaForms();", True)
         Else
             Select Case ArriKey(0)
                 Case "INS"
+                    'INSERTA TODOS LOS DATOS, ACTUALIZA EL FOLIO Y EN CASO DE NO HABER ERROR
+                    'REDIRECCIONA
                     If InsertGeneral() And InsertParametrosList() And InsertParametrosText() And InsertGuia() Then
                         UpdateFolio()
-                        Response.Redirect("RecepcionBascula")
+                        If InsertInventario() Then
+                            Response.Redirect("RecepcionBascula")
+                        Else
+                            ScriptManager.RegisterStartupScript(Me, GetType(Page), "ErrorInsertInv", "ErrorInsertInv();", True)
+                        End If
                     Else
                         ScriptManager.RegisterStartupScript(Me, GetType(Page), "ErrorInsert", "ErrorInsert();", True)
                     End If
                 Case "UPD"
+                    'ACTUALIZA LOS DATOS Y EN CASO DE NO HABER ERROR REDIRECCIONA
                     If UpdateGeneral() And UpdateParametrosList() And UpdateParametrosText() And DeleteGuia() And InsertGuia() Then
                         Response.Redirect("RecepcionBascula")
                     Else
                         ScriptManager.RegisterStartupScript(Me, GetType(Page), "ErrorUpdate", "ErrorUpdate();", True)
                     End If
                 Case "DEL"
-                    If DeleteGuia() And DeleteParametros() And DeleteGeneral() Then
-                        Response.Redirect("RecepcionBascula")
+                    'ELIMINA LOS DATOS Y EN CASO DE NO HABER ERROR REDIRECCIONA
+                    If InsertInventario() Then
+                        If DeleteGuia() And DeleteParametros() And DeleteGeneral() Then
+                            Response.Redirect("RecepcionBascula")
+                        Else
+                            ScriptManager.RegisterStartupScript(Me, GetType(Page), "ErrorDelete", "ErrorDelete();", True)
+                        End If
                     Else
-                        ScriptManager.RegisterStartupScript(Me, GetType(Page), "ErrorDelete", "ErrorDelete();", True)
+                        ScriptManager.RegisterStartupScript(Me, GetType(Page), "ErrorInsertInv", "ErrorInsertInv();", True)
                     End If
             End Select
         End If
@@ -414,6 +439,14 @@ Public Class AgregarBascula
                 PesoBruto.Text = "0.00"
                 TaraEnvase.Text = "0.00"
                 PesoNeto.Text = "0.00"
+            End If
+
+            If ArriKey(0) = "DEL" Then
+                ddlUbicaciones.Enabled = False
+                ddlVariedades.Enabled = False
+                ddlEnvases.Enabled = False
+                Cantidad.Enabled = False
+                PesoBruto.Enabled = False
             End If
         End If
     End Sub
@@ -919,9 +952,7 @@ Public Class AgregarBascula
             Dim cs As New ColeccionPrmSql
 
             Select Case ArriKey(0)
-                Case "INS"
-
-                Case Else
+                Case "UPD"
                     Dim id As Integer = e.Row.Cells(0).Text
                     Try
                         Dim cs1 As New ColeccionPrmSql
@@ -931,6 +962,20 @@ Public Class AgregarBascula
                         cs.Create("_VALOR", "ParametroEntrada")
                         txtAdd.Text = oSqlI._Valor(oSqlI.ValddlAdd, cs)
                         cs = cs1
+                    Catch ex As Exception
+                        Tools.AddErrorLog(oUsr.Mis.Log, ex)
+                    End Try
+                Case "DEL"
+                    Dim id As Integer = e.Row.Cells(0).Text
+                    Try
+                        Dim cs1 As New ColeccionPrmSql
+                        cs.Create("@IDE", lbl_empresa_id.Text)
+                        cs.Create("@IDF", lbl_idf.Text)
+                        cs.Create("@IDP", id)
+                        cs.Create("_VALOR", "ParametroEntrada")
+                        txtAdd.Text = oSqlI._Valor(oSqlI.ValddlAdd, cs)
+                        cs = cs1
+                        txtAdd.Enabled = False
                     Catch ex As Exception
                         Tools.AddErrorLog(oUsr.Mis.Log, ex)
                     End Try
@@ -1173,4 +1218,129 @@ Public Class AgregarBascula
             Tools.AddErrorLog(oUsr.Mis.Log, ex)
         End Try
     End Function
+
+    'METODOS NUEVOS PARA INVENTARIO
+    Private Function InsertInventario() As Boolean
+        Dim oSQL As New SQLInsertarDatos(oUsr)
+        Dim cs As New ColeccionPrmSql
+        InsertInventario = False
+        Try
+            For Each row As GridViewRow In GridView2.Rows
+                If row.RowType = DataControlRowType.DataRow Then
+                    'Dim keycont As Integer = GridView3.DataKeys(row.RowIndex).Value
+                    Dim cs1 As New ColeccionPrmSql
+                    PesoNeto = row.FindControl("txt_PesoNeto")
+                    GuiaID = row.FindControl("txt_GuiaID")
+                    Ubicacion = row.FindControl("ddl_ubicacion")
+                    variedad = row.FindControl("ddl_variedad")
+                    envase = row.FindControl("ddl_envase")
+                    Cantidad = row.FindControl("txt_Cantidad")
+                    PesoBruto = row.FindControl("txt_PesoBruto")
+
+                    If String.IsNullOrEmpty(GuiaID.Text) Then
+
+                    Else
+                        cs.Create("@IDEmp", lbl_empresa_id.Text)
+                        cs.Create("@UbicaID", ObtieneUbicaDestino())
+                        'CONDICIOON PARA EVALUAR EL PRODUCTOID
+                        'METODO PARA OBTENER EL PRODUCTO ID
+                        Select Case ObtieneCultivo(variedad.SelectedValue)
+                            Case 1 'AJO
+                                cs.Create("@ProdID", "AJO")
+                            Case 11 'AJORGANICO
+                                cs.Create("@ProdID", "AJORGANICO")
+                            Case Else
+                                cs.Create("@ProdID", "AJO")
+                        End Select
+                        cs.Create("@MovClas", "")
+                        cs.Create("@IDF", lbl_idf.Text)
+                        cs.Create("@fecha", txt_fecha.Text)
+                        cs.Create("@Cantidad", Cantidad.Text)
+                        cs.Create("@PNeto", PesoNeto.Text)
+
+                        'PARAMETROS DE BUILDING_LOTE
+                        cs.Create("@ProcesoID", lbl_proceso_id.Text)
+                        cs.Create("@TablaID", Ubicacion.SelectedValue)
+                        cs.Create("@VarID", variedad.SelectedValue)
+                        cs.Create("@fechaLote", txt_fecha.Text)
+                        cs.Create("@Extra", ObtieneSize(Ubicacion.SelectedValue, variedad.SelectedValue))
+
+                        cs.Create("@MovLoteHis", "")
+                        cs.Create("@OrigenMovID", 7)
+
+                        Select Case ArriKey(0)
+                            Case "INS"
+                                'REALIZA UN MOVIMIENTO DE ENTRADA AL INVENTARIO
+                                cs.Create("@MovTipo", "E")
+                                cs.Create("@MovObs", "Recepción de MP")
+                            Case "DEL"
+                                'REALIZA UN MOVIMIENTO DE SALIDA AL INVENTARIO
+                                cs.Create("@MovTipo", "S")
+                                cs.Create("@MovObs", "Cancelación de Recepción de MP")
+                        End Select
+                        oSQL.ExecuteQry(oSQL.InsInventario, cs)
+                        cs = cs1
+                    End If
+                End If
+            Next
+            Return True
+        Catch ex As Exception
+            Tools.AddErrorLog(oUsr.Mis.Log, ex)
+        End Try
+    End Function
+
+    Private Function ObtieneCultivo(ByVal variedad As Integer) As Integer
+        Dim oSql As New SQLInventarios(oUsr)
+        Dim oCs As New ColeccionPrmSql
+        ObtieneCultivo = 0
+        Try
+            oCs.Create("@variedad", variedad)
+            oCs.Create("_VALOR", "CultivoID")
+            Return oSql._Valor(oSql.ValorCultivo, oCs)
+        Catch ex As Exception
+            Tools.AddErrorLog(oUsr.Mis.Log, ex)
+        End Try
+    End Function
+
+    Private Function ObtieneUbicaDestino() As String
+        Dim oSql As New SQLInventarios(oUsr)
+        Dim oCs As New ColeccionPrmSql
+        ObtieneUbicaDestino = ""
+        Try
+            oCs.Create("@proceso", lbl_proceso_id.Text)
+            oCs.Create("_VALOR", "UbicacionDestinoID")
+            Return oSql._Valor(oSql.ValorUbicacionDestino, oCs)
+        Catch ex As Exception
+            Tools.AddErrorLog(oUsr.Mis.Log, ex)
+        End Try
+    End Function
+
+    Private Function ObtieneFleteInv() As Integer
+        Dim oSql As New SQLFletes(oUsr)
+        Dim oCs As New ColeccionPrmSql
+        ObtieneFleteInv = 0
+        Try
+            oCs.Create("@IDF", lbl_idf.Text)
+            oCs.Create("_VALOR", "ParametroEntrada")
+            Return oSql._Valor(oSql.ValFleteID, oCs)
+        Catch ex As Exception
+            Tools.AddErrorLog(oUsr.Mis.Log, ex)
+        End Try
+    End Function
+
+    Private Function ObtieneSize(ByVal ubicacion As String, ByVal variedad As Integer) As String
+        Dim oSql As New SQLInventarios(oUsr)
+        Dim oCs As New ColeccionPrmSql
+        ObtieneSize = ""
+        Try
+            oCs.Create("@ubi", ubicacion)
+            oCs.Create("@vari", variedad)
+            oCs.Create("@flete", ObtieneFleteInv())
+            oCs.Create("_VALOR", "ClasificaSizeNombre")
+            Return oSql._Valor(oSql.ValorSize, oCs)
+        Catch ex As Exception
+            Tools.AddErrorLog(oUsr.Mis.Log, ex)
+        End Try
+    End Function
+    'FIN DE METODOS PARA INVENTARIO
 End Class

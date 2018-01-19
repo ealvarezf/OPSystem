@@ -28,14 +28,18 @@ Public Class RecepcionBascula
         pnlFiltros.Visible = False
         pnlAdd.Visible = False
         pnlListar.Visible = True
-        'With BarEventos1
-        '    .Nuevo = True
-        '    .Eliminar = True
-        '    .Editar = True
-        '    .Exportar = False
-        '    .Filtrar = True
-        '    .Listar = False
-        'End With
+        With BarEventos1
+            '    .Nuevo = True
+            '    .Eliminar = True
+            '    .Editar = True
+            '    .Exportar = False
+            '    .Filtrar = True
+            '    .Listar = False
+            .Editar.Boton.Visible = False
+            .Eliminar.Boton.Visible = False
+            .Editar.Boton.Enabled = False
+            .Eliminar.Boton.Enabled = False
+        End With
         'Valores predeterminados
         'txt_ModuloID.Text = ""
         'txt_Modulo.Text = ""
