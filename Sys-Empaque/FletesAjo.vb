@@ -26,6 +26,21 @@ Public Class SQLFletes
         End Get
     End Property
 
+    Public ReadOnly Property ListaFleteAdmin As String
+        Get
+            Return " select FleteID, FleteObservacion, CONVERT(char(10), FleteFecha, 103) as FleteFecha, TipoFleteNombre, rut_desrut, TransportistaNombre, " &
+                   " (' [N ECO] ' + dbo.VCHARLEFT(CamionEconomico) + ' [PLC] ' + dbo.VCHARLEFT(CamionPlacas)) as cam_descam, " &
+                   " OperadorNombre + ' ' + OperadorApellidos as Operador, " &
+                   " f.RutaID, f.CamionID, f.OperadorID " &
+                   " from FLETE f join TIPOFLETE tf on f.TipoFleteID=tf.TipoFleteID " &
+                   " join VW_RUTAS vr on f.RutaID=vr.RutaID " &
+                   " join TRANSPORTISTA t on f.TransportistaID=t.TransportistaID " &
+                   " join TRANSPORTISTACAMION tc on f.CamionID=tc.CamionID " &
+                   " join TRANSPORTISTAOPERADOR op on f.OperadorID=op.OperadorID " &
+                   " order by FleteFechaRegistro desc "
+        End Get
+    End Property
+
     Public ReadOnly Property ListaTipo As String
         Get
             Return "select tipofleteid, tipofletenombre from tipoflete"

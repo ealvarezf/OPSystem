@@ -55,11 +55,11 @@
       <HintPath>..\packages\CrystalReportsWeb.13.0.9.1312\lib\net40\CRVsPackageLib.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
-    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
-    <Reference Include="CrystalDecisions.Shared, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
-    <Reference Include="CrystalDecisions.Web, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
-    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Web, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="DocumentFormat.OpenXml, Version=2.7.2.0, Culture=neutral, PublicKeyToken=8fb06cb64d019a17, processorArchitecture=MSIL">
       <HintPath>..\packages\DocumentFormat.OpenXml.2.7.2\lib\net40\DocumentFormat.OpenXml.dll</HintPath>
     </Reference>
@@ -548,6 +548,7 @@
     <Content Include="Bundle.config" />
     <Content Include="WEmpaque\AgregarBascula.aspx" />
     <Content Include="WEmpaque\Fletes.aspx" />
+    <Content Include="WEmpaque\FletesAdmin.aspx" />
     <Content Include="WEmpaque\ListadoFletesAjo.aspx" />
     <Content Include="WEmpaque\RecepcionBascula.aspx" />
     <Content Include="WEmpaque\ShowFlete.aspx" />
@@ -889,6 +890,13 @@
     </Compile>
     <Compile Include="WEmpaque\Fletes.aspx.vb">
       <DependentUpon>Fletes.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="WEmpaque\FletesAdmin.aspx.designer.vb">
+      <DependentUpon>FletesAdmin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WEmpaque\FletesAdmin.aspx.vb">
+      <DependentUpon>FletesAdmin.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="WEmpaque\ListadoFletesAjo.aspx.designer.vb">
