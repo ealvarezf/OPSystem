@@ -103,7 +103,7 @@
             </asp:Panel>            
         </form>
     </div>
-    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:AgroGemPrdConnectionString2 %>" DeleteCommand="DELETE FROM [ORDENPPRODUCCION] WHERE [OrdenID] = @OrdenID AND [OrdenProduccionID] = @OrdenProduccionID" InsertCommand="INSERT INTO [ORDENPPRODUCCION] ([OrdenID], [OrdenProduccionID], [ProductoCantidad], [ProductoPeso], [ProduccionEmpresaID], [ProduccionUbicacionID], [ProduccionProductoID], [ProduccionProductoLote], [ProduccionRegistroID]) VALUES (@OrdenID, @OrdenProduccionID, @ProductoCantidad, @ProductoPeso, @ProduccionEmpresaID, @ProduccionUbicacionID, @ProduccionProductoID, @ProduccionProductoLote, @ProduccionRegistroID)" SelectCommand="SELECT OrdenID, OrdenProduccionID, ProduccionEmpresaID, ProduccionUbicacionID, ProduccionProductoID, ProductoNombre, ProductoCantidad, ProductoPeso,
+    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:AgroGemPrdConnectionString3 %>" DeleteCommand="DELETE FROM [ORDENPPRODUCCION] WHERE [OrdenID] = @OrdenID AND [OrdenProduccionID] = @OrdenProduccionID" InsertCommand="INSERT INTO [ORDENPPRODUCCION] ([OrdenID], [OrdenProduccionID], [ProductoCantidad], [ProductoPeso], [ProduccionEmpresaID], [ProduccionUbicacionID], [ProduccionProductoID], [ProduccionProductoLote], [ProduccionRegistroID]) VALUES (@OrdenID, @OrdenProduccionID, @ProductoCantidad, @ProductoPeso, @ProduccionEmpresaID, @ProduccionUbicacionID, @ProduccionProductoID, @ProduccionProductoLote, @ProduccionRegistroID)" SelectCommand="SELECT OrdenID, OrdenProduccionID, ProduccionEmpresaID, ProduccionUbicacionID, ProduccionProductoID, ProductoNombre, ProductoCantidad, ProductoPeso,
        ProduccionProductoLote, ProduccionRegistroID
   FROM ORDENPPRODUCCION OP LEFT JOIN PRODUCTOS P ON P.EmpresaID = OP.ProduccionEmpresaID
                            AND P.ProductoID = OP.ProduccionProductoID
@@ -138,7 +138,7 @@
             <asp:Parameter Name="OrdenProduccionID" Type="Int16" />
         </UpdateParameters>
     </asp:SqlDataSource>
-    <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:AgroGemPrdConnectionString %>" SelectCommand="SELECT [ProductoID], [ProductoNombre] FROM [PRODUCTOS] WHERE ([EmpresaID] = @EmpresaID)">
+    <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:AgroGemPrdConnectionString3 %>" SelectCommand="SELECT [ProductoID], [ProductoNombre] FROM [PRODUCTOS] WHERE ([EmpresaID] = @EmpresaID)">
         <SelectParameters>
             <asp:Parameter DefaultValue="15" Name="EmpresaID" Type="Int16" />
         </SelectParameters>

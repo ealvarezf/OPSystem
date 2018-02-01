@@ -81,8 +81,9 @@ Public Class SQLFletes
 
     Public ReadOnly Property ListaCamion As String
         Get
-            Return " SELECT CamionID, (dbo.VCHARLEFT(TransportistaNombre) + ' [N ECO] ' + dbo.VCHARLEFT(CamionEconomico) + ' [PLC] ' + dbo.VCHARLEFT(CamionPlacas)) as cam_descam " &
+            Return " SELECT CamionID, (dbo.VCHARLEFT(TransportistaNombre) + ' [N ECO] ' + dbo.VCHARLEFT(CamionEconomico) + ' [PLC] ' + dbo.VCHARLEFT(CamionPlacas) + ' ' + TipoTransporteNombre) as cam_descam " &
                    "   FROM TRANSPORTISTACAMION A LEFT JOIN TRANSPORTISTA B ON B.TransportistaID = A.TransportistaID " &
+                   "  LEFT JOIN TIPOTRANSPORTE C ON C.TipoTransporteID = A.TipoTransporteID " &
                    "  WHERE EXISTS (SELECT * FROM TIPOFLETETRANSPORTISTA C WHERE C.TransportistaID = B.TransportistaID AND TipoFleteID = @keytpf ) "
         End Get
     End Property
@@ -162,6 +163,14 @@ Public Class SQLFletes
     Public ReadOnly Property ValRuta As String
         Get
             Return " select OrigenID from RUTA where RutaID = @ruta "
+        End Get
+    End Property
+
+    Public ReadOnly Property ValCostoRuta As String
+        Get
+            Return " SELECT RC.RUTACOSTO " &
+                   " FROM RUTACOSTO RC JOIN TRANSPORTISTACAMION TC ON RC.TIPOTRANSPORTEID=TC.TIPOTRANSPORTEID " &
+                   " WHERE RC.RutaID = @ruta AND TC.CAMIONID = @camion "
         End Get
     End Property
 

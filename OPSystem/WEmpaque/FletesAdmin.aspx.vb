@@ -64,11 +64,6 @@ Public Class FletesAdmin
             .Listar = False
         End With
         With BarEventos2
-            '    .Nuevo = True
-            '    .Eliminar = True
-            '    .Editar = True
-            '    .Exportar = False
-            '    .Filtrar = False
             .Filtrar.Boton.Visible = False
             .Listar.Boton.ToolTip = "Reimprimir Ticket"
             .Nuevo.Boton.ToolTip = "Nuevo Flete"
@@ -384,9 +379,10 @@ Public Class FletesAdmin
                         LoadLista(oCs)
                         DDLPrv.Enabled = False
                         DDLRuta.Enabled = False
-                        'PnlListas.Visible = False
-                        'PnlWizard.Visible = True
-                        Resumen()
+                    'PnlListas.Visible = False
+                    'PnlWizard.Visible = True
+                    Resumen()
+                    Session.Add("TICKET", True)
                     CallReporte(txtResumen.Text)
                 Catch ex As Exception
                     Tools.AddErrorLog(oUsr.Mis.Log, ex)
@@ -611,7 +607,11 @@ Public Class FletesAdmin
 
     Private Sub Resumen()
         Dim sFlete As String = String.Empty
+        Dim CostoRuta As String = ObtieneCostoRuta()
         Try
+            If String.IsNullOrEmpty(CostoRuta) Then
+                CostoRuta = "No Definido"
+            End If
             sFlete = Space(10) + "GRUPO U" + Space(10) + vbCrLf
             sFlete += "Orden de Flete:" & lblFlete.ToolTip & vbCrLf
             sFlete += "Fecha:" & FechaFlete(lblFlete.ToolTip).ToString & vbCrLf
@@ -619,7 +619,7 @@ Public Class FletesAdmin
             'sFlete += "Movimiento:" & lblTipoFlete.Text & vbCrLf
             sFlete += "Movimiento:" & DDLTipo.SelectedItem.Text & vbCrLf
             sFlete += "Ruta:" & DDLRuta.SelectedItem.Text & vbCrLf
-            'sFlete += "Costo:" & lblCamion.ToolTip & vbCrLf
+            sFlete += "Costo:" & CostoRuta & vbCrLf
             sFlete += "Transporta/Camión:" & DDLCamíon.SelectedItem.Text & vbCrLf
             sFlete += "Operador:" & DDLOperador.SelectedItem.Text & vbCrLf
             sFlete += "Responsable:" & lblResponsable.Text & vbCrLf
@@ -914,4 +914,19 @@ Public Class FletesAdmin
             txtCan.Text = ""
         End If
     End Sub
+
+    'Metodo para obtener el costo de la ruta seleccionada en base al tipo de transporte
+    Private Function ObtieneCostoRuta() As String
+        Dim oSql As New SQLFletes(oUsr)
+        Dim oCs As New ColeccionPrmSql
+        ObtieneCostoRuta = ""
+        Try
+            oCs.Create("@ruta", DDLRuta.SelectedValue)
+            oCs.Create("@camion", DDLCamíon.SelectedValue)
+            oCs.Create("_VALOR", "RUTACOSTO")
+            Return oSql._Valor(oSql.ValCostoRuta, oCs)
+        Catch ex As Exception
+            Tools.AddErrorLog(oUsr.Mis.Log, ex)
+        End Try
+    End Function
 End Class

@@ -268,7 +268,7 @@
             </asp:Panel>
         </form>
     </div>
-    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:AgroGemPrdConnectionString %>" DeleteCommand="DELETE FROM [ORDENPGASTO] WHERE [OrdenID] = @OrdenID AND [OrdenGastoID] = @OrdenGastoID" InsertCommand="INSERT INTO [ORDENPGASTO] ([OrdenID], [OrdenGastoID], [OrdenGastoExT], [OrdenGastoPesoBruto], [OrdenGastoPesoTara], [OrdenGastoRegistro], [GastoProductoID], [GastoProductoLote], [GastoEmpresaID], [GastoUbicacionID], [OrdenGastoInfo3], [OrdenGastoInfo2], [OrdenGastoInfo1]) VALUES (@OrdenID, @OrdenGastoID, @OrdenGastoExT, @OrdenGastoPesoBruto, @OrdenGastoPesoTara, @OrdenGastoRegistro, @GastoProductoID, @GastoProductoLote, @GastoEmpresaID, @GastoUbicacionID, @OrdenGastoInfo3, @OrdenGastoInfo2, @OrdenGastoInfo1)" SelectCommand="SELECT OrdenID, OrdenGastoID, OrdenGastoExT, GastoEmpresaID, GastoUbicacionID, GastoProductoID, ProductoNombre, OrdenGastoPesoBruto, OrdenGastoPesoTara,
+    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:AgroGemPrdConnectionString3 %>" DeleteCommand="DELETE FROM [ORDENPGASTO] WHERE [OrdenID] = @OrdenID AND [OrdenGastoID] = @OrdenGastoID" InsertCommand="INSERT INTO [ORDENPGASTO] ([OrdenID], [OrdenGastoID], [OrdenGastoExT], [OrdenGastoPesoBruto], [OrdenGastoPesoTara], [OrdenGastoRegistro], [GastoProductoID], [GastoProductoLote], [GastoEmpresaID], [GastoUbicacionID], [OrdenGastoInfo3], [OrdenGastoInfo2], [OrdenGastoInfo1]) VALUES (@OrdenID, @OrdenGastoID, @OrdenGastoExT, @OrdenGastoPesoBruto, @OrdenGastoPesoTara, @OrdenGastoRegistro, @GastoProductoID, @GastoProductoLote, @GastoEmpresaID, @GastoUbicacionID, @OrdenGastoInfo3, @OrdenGastoInfo2, @OrdenGastoInfo1)" SelectCommand="SELECT OrdenID, OrdenGastoID, OrdenGastoExT, GastoEmpresaID, GastoUbicacionID, GastoProductoID, ProductoNombre, OrdenGastoPesoBruto, OrdenGastoPesoTara,
        GastoProductoLote, OrdenGastoInfo1, OrdenGastoPesoNeto, OrdenGastoPesoAcumulado
   FROM ORDENPGASTO OG LEFT JOIN PRODUCTOS P ON P.EmpresaID = OG.GastoEmpresaID
                                            AND P.ProductoID = OG.GastoProductoID
@@ -311,6 +311,6 @@
             <asp:Parameter Name="OrdenGastoID" Type="Int16" />
         </UpdateParameters>
     </asp:SqlDataSource>
-    <asp:SqlDataSource ID="SqlDataSource2" runat="server"></asp:SqlDataSource>
+    <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:AgroGemPrdConnectionString3 %>" SelectCommand="SELECT * FROM [__MigrationHistory]"></asp:SqlDataSource>
 </body>
 </html>

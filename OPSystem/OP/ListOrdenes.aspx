@@ -306,7 +306,7 @@
                             </ig:Selection>
                         </Behaviors>
                     </ig:WebDataGrid>
-                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:AgroGemPrdConnectionString %>" SelectCommand="SELECT O.ProcesoID, ProcesoNombre, OrdenID, OrdenFecha, OrdenFechaRegistro, dbo.Get_EntradaParametro(OrdenID,18) LoteOrigen,
+                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:AgroGemPrdConnectionString3 %>" SelectCommand="SELECT O.ProcesoID, ProcesoNombre, OrdenID, OrdenFecha, OrdenFechaRegistro, dbo.Get_EntradaParametro(OrdenID,18) LoteOrigen,
 dbo.BuildingInfo_LoteOrigen(dbo.Get_EntradaParametro(OrdenID,18)+'-') LoteOrigenInfo
 FROM ORDENP O LEFT JOIN PROCESOS P ON P.ProcesoID = O.ProcesoID
 WHERE O.ProcesoID = @ProcesoID">

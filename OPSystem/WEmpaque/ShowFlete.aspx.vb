@@ -2,7 +2,6 @@
 Imports CrystalDecisions.Shared
 Imports Security_System
 Imports System.IO
-Imports System.Net
 
 Public Class ShowFlete
     Inherits System.Web.UI.Page
@@ -30,7 +29,9 @@ Public Class ShowFlete
                     If Not IsPostBack Then
                         customerReport.ExportToDisk(ExportFormatType.PortableDocFormat, oUsr.Mis.Log.Replace("Err.log", oRp.Nombre))
                         'customerReport.PrintToPrinter(1, False, 1, 1)
-                        SendMail()
+                        If Not Session("TICKET") Then
+                            SendMail()
+                        End If
                         Session.Remove("INFORP")
                         Transferir_Archivo(oUsr.Mis.Log.Replace("Err.log", oRp.Nombre), oRp.Nombre)
                     End If
@@ -44,6 +45,7 @@ Public Class ShowFlete
         Catch ex As Exception
             Tools.AddErrorLog(oUsr.Mis.Log, ex)
             Session.Remove("INFORP")
+            Session.Remove("TICKET")
         End Try
     End Sub
 
