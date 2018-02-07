@@ -24,7 +24,10 @@ Public Class AgregarBascula
     Dim err As Integer = 0
     Dim Total As Double
     Dim FleteGlobal As Object
-
+    Dim TotalPesoTara As Double = 0
+    Dim CantidadTarimas As TextBox
+    Dim PesoTarima As TextBox
+    Dim ddlTarimas As DropDownList
 
     Private Sub AgregarBascula_Init(sender As Object, e As EventArgs) Handles Me.Init
         oUsr = Session("Usr")
@@ -99,27 +102,27 @@ Public Class AgregarBascula
         End If
     End Sub
 
-    Protected Sub txt_peso_tara_TextChanged(sender As Object, e As EventArgs) Handles txt_peso_tara.TextChanged
-        If String.IsNullOrEmpty(txt_peso_tara.Text) Then
-            txt_peso_tara.Text = "0.00"
-        End If
-        If IsNumeric(txt_peso_tara.Text) Then
-            If CType(txt_peso_tara.Text, Double) > 0 Then
-                lbl_peso_neto.Text = (CType(txt_peso_bruto.Text, Double) - CType(txt_peso_tara.Text, Double))
-            Else
-                txt_peso_tara.Text = "0.00"
-                lbl_peso_neto.Text = (CType(txt_peso_bruto.Text, Double) - CType(txt_peso_tara.Text, Double))
-            End If
-        Else
-            txt_peso_tara.Text = "0.00"
-            lbl_peso_neto.Text = (CType(txt_peso_bruto.Text, Double) - CType(txt_peso_tara.Text, Double))
-        End If
-        ValidaPesoNeto()
-        If CType(lbl_peso_neto.Text, Double) < 0 Or CType(lbl_peso_neto.Text, Double) < Total Then
-            txt_peso_tara.Text = "0.00"
-            lbl_peso_neto.Text = (CType(txt_peso_bruto.Text, Double) - CType(txt_peso_tara.Text, Double))
-        End If
-    End Sub
+    'Protected Sub txt_peso_tara_TextChanged(sender As Object, e As EventArgs) Handles txt_peso_tara.TextChanged
+    '    If String.IsNullOrEmpty(txt_peso_tara.Text) Then
+    '        txt_peso_tara.Text = "0.00"
+    '    End If
+    '    If IsNumeric(txt_peso_tara.Text) Then
+    '        If CType(txt_peso_tara.Text, Double) > 0 Then
+    '            lbl_peso_neto.Text = (CType(txt_peso_bruto.Text, Double) - CType(txt_peso_tara.Text, Double))
+    '        Else
+    '            txt_peso_tara.Text = "0.00"
+    '            lbl_peso_neto.Text = (CType(txt_peso_bruto.Text, Double) - CType(txt_peso_tara.Text, Double))
+    '        End If
+    '    Else
+    '        txt_peso_tara.Text = "0.00"
+    '        lbl_peso_neto.Text = (CType(txt_peso_bruto.Text, Double) - CType(txt_peso_tara.Text, Double))
+    '    End If
+    '    ValidaPesoNeto()
+    '    If CType(lbl_peso_neto.Text, Double) < 0 Or CType(lbl_peso_neto.Text, Double) < Total Then
+    '        txt_peso_tara.Text = "0.00"
+    '        lbl_peso_neto.Text = (CType(txt_peso_bruto.Text, Double) - CType(txt_peso_tara.Text, Double))
+    '    End If
+    'End Sub
 
     Protected Sub txt_peso_bruto_TextChanged(sender As Object, e As EventArgs) Handles txt_peso_bruto.TextChanged
         If String.IsNullOrEmpty(txt_peso_bruto.Text) Then
@@ -138,7 +141,8 @@ Public Class AgregarBascula
         End If
         ValidaPesoNeto()
         If CType(lbl_peso_neto.Text, Double) < 0 Or CType(lbl_peso_neto.Text, Double) < Total Then
-            txt_peso_tara.Text = "0.00"
+            txt_peso_tara_camion.Text = "0.00"
+            txt_peso_tara.Text = (CType(txt_peso_tara_camion.Text, Double) + CType(txt_peso_tara_envase.Text, Double))
             txt_peso_bruto.Text = "0.00"
             lbl_peso_neto.Text = (CType(txt_peso_bruto.Text, Double) - CType(txt_peso_tara.Text, Double))
         End If
@@ -381,6 +385,7 @@ Public Class AgregarBascula
             Dim ddlUbicaciones As DropDownList = DirectCast(e.Row.FindControl("ddl_ubicacion"), DropDownList)
             Dim ddlVariedades As DropDownList = DirectCast(e.Row.FindControl("ddl_variedad"), DropDownList)
             Dim ddlEnvases As DropDownList = DirectCast(e.Row.FindControl("ddl_envase"), DropDownList)
+            ddlTarimas = e.Row.FindControl("ddl_tarima")
             Dim oSql As New SQLFletes(oUsr)
             Dim lCsI As New ColeccionPrmSql
             Dim oSqlI As New SQLCargarDatos(oUsr)
@@ -414,6 +419,12 @@ Public Class AgregarBascula
             LoadCombo(oUsr, ddlEnvases, lCsI)
             ddlEnvases.SelectedIndex = -1
 
+            lCsI.ItemValue("_Tabla") = "TARIMAS"
+            lCsI.ItemValue("_Qry") = oSqlI.ComboTarimas
+            lCsI.ItemValue("_Order") = "TarimaID"
+            LoadCombo(oUsr, ddlTarimas, lCsI)
+            ddlEnvases.SelectedIndex = -1
+
             GuiaID = e.Row.FindControl("txt_GuiaID")
             PesoEnvase = e.Row.FindControl("txt_PesoEnvase")
             Cantidad = e.Row.FindControl("txt_Cantidad")
@@ -421,6 +432,8 @@ Public Class AgregarBascula
             PesoNeto = e.Row.FindControl("txt_PesoNeto")
             PesoBruto = e.Row.FindControl("txt_PesoBruto")
             Origen = e.Row.FindControl("txt_Origen")
+            CantidadTarimas = e.Row.FindControl("txt_Cantidad_Tarimas")
+            PesoTarima = e.Row.FindControl("txt_Peso_Tarima")
 
             If Not String.IsNullOrEmpty(Convert.ToString(DataBinder.Eval(e.Row.DataItem, "GuiaID"))) Then
                 GuiaID.Text = DataBinder.Eval(e.Row.DataItem, "GuiaID")
@@ -433,8 +446,21 @@ Public Class AgregarBascula
                 PesoBruto.Text = DataBinder.Eval(e.Row.DataItem, "GuiaPesoBruto")
                 TaraEnvase.Text = DataBinder.Eval(e.Row.DataItem, "TaraEnvase")
                 PesoNeto.Text = DataBinder.Eval(e.Row.DataItem, "PesoNeto")
-            Else
-                PesoEnvase.Text = "0.00"
+                Dim envID As Integer = DataBinder.Eval(e.Row.DataItem, "EnvaseID")
+                If envID < 8 Or envID > 10 Then
+                    GetIndex(ddlTarimas, 1)
+                    ddlTarimas.Enabled = False
+                    CantidadTarimas.Text = "0"
+                    PesoTarima.Text = "0"
+                    CantidadTarimas.Enabled = False
+                End If
+
+                Total = Total + CType(TaraEnvase.Text, Double)
+                    txt_peso_tara_envase.Text = Total
+                    txt_peso_tara.Text = (CType(txt_peso_tara_camion.Text, Double) + CType(txt_peso_tara_envase.Text, Double))
+                    lbl_peso_neto.Text = (CType(txt_peso_bruto.Text, Double) - CType(txt_peso_tara.Text, Double))
+                Else
+                    PesoEnvase.Text = "0.00"
                 Cantidad.Text = "0"
                 PesoBruto.Text = "0.00"
                 TaraEnvase.Text = "0.00"
@@ -448,6 +474,14 @@ Public Class AgregarBascula
                 Cantidad.Enabled = False
                 PesoBruto.Enabled = False
             End If
+
+            ddlUbicaciones.ToolTip = ddlUbicaciones.SelectedItem.Text
+            ddlVariedades.ToolTip = ddlVariedades.SelectedItem.Text
+            ddlEnvases.ToolTip = ddlEnvases.SelectedItem.Text
+            Origen.ToolTip = Origen.Text
+            ddlTarimas.ToolTip = ddlTarimas.SelectedItem.Text
+            TaraEnvase.ToolTip = TaraEnvase.Text
+            PesoNeto.ToolTip = PesoNeto.Text
         End If
     End Sub
 
@@ -457,12 +491,18 @@ Public Class AgregarBascula
             If row.RowType = DataControlRowType.DataRow Then
                 'Dim keycont As Integer = GridView1.DataKeys(row.RowIndex).Value
                 GuiaID = row.FindControl("txt_GuiaID")
-
+                Dim ddlUbicaciones As DropDownList = DirectCast(row.FindControl("ddl_ubicacion"), DropDownList)
+                Dim ddlVariedades As DropDownList = DirectCast(row.FindControl("ddl_variedad"), DropDownList)
+                Dim ddlEnvases As DropDownList = DirectCast(row.FindControl("ddl_envase"), DropDownList)
                 PesoEnvase = row.FindControl("txt_PesoEnvase")
                 Cantidad = row.FindControl("txt_Cantidad")
                 TaraEnvase = row.FindControl("txt_TaraEnvase")
                 PesoNeto = row.FindControl("txt_PesoNeto")
                 PesoBruto = row.FindControl("txt_PesoBruto")
+                ddlTarimas = row.FindControl("ddl_tarima")
+                CantidadTarimas = row.FindControl("txt_Cantidad_Tarimas")
+                PesoTarima = row.FindControl("txt_Peso_Tarima")
+                Origen = row.FindControl("txt_Origen")
                 Try
                     If String.IsNullOrEmpty(PesoBruto.Text) Then
                         PesoBruto.Text = "0.00"
@@ -470,16 +510,36 @@ Public Class AgregarBascula
                     If String.IsNullOrEmpty(Cantidad.Text) Then
                         Cantidad.Text = "0.00"
                     End If
+                    If String.IsNullOrEmpty(CantidadTarimas.Text) Then
+                        CantidadTarimas.Text = "0.00"
+                    End If
+                    If String.IsNullOrEmpty(PesoTarima.Text) Then
+                        PesoTarima.Text = "0.00"
+                    End If
                     If IsNumeric(Cantidad.Text) And IsNumeric(PesoBruto.Text) Then
                         If CType(Cantidad.Text, Double) >= 0 And CType(PesoBruto.Text, Double) >= 0 Then
-                            TaraEnvase.Text = (CType(Cantidad.Text, Integer) * CType(PesoEnvase.Text, Double))
+                            TaraEnvase.Text = (CType(PesoEnvase.Text, Double) * CType(Cantidad.Text, Double)) + (CType(CantidadTarimas.Text, Double) * CType(PesoTarima.Text, Double))
                             PesoNeto.Text = (CType(PesoBruto.Text, Double) - CType(TaraEnvase.Text, Double))
                             Total = Total + CType(PesoNeto.Text, Double)
+
+                            'Acomodar el Peso Tara Envase
+                            TotalPesoTara = TotalPesoTara + CType(TaraEnvase.Text, Double)
+                            txt_peso_tara_envase.Text = TotalPesoTara
+                            txt_peso_tara.Text = (CType(txt_peso_tara_camion.Text, Double) + CType(txt_peso_tara_envase.Text, Double))
+                            lbl_peso_neto.Text = (CType(txt_peso_bruto.Text, Double) - CType(txt_peso_tara.Text, Double))
+                            'Fin de Peso Tara Envase
                         Else
                             Cantidad.Text = "0.00"
                             PesoBruto.Text = "0.00"
                             TaraEnvase.Text = "0.00"
                             PesoNeto.Text = "0.00"
+
+                            'Acomodar el Peso Tara Envase
+                            TotalPesoTara = TotalPesoTara + CType(TaraEnvase.Text, Double)
+                            txt_peso_tara_envase.Text = TotalPesoTara
+                            txt_peso_tara.Text = (CType(txt_peso_tara_camion.Text, Double) + CType(txt_peso_tara_envase.Text, Double))
+                            lbl_peso_neto.Text = (CType(txt_peso_bruto.Text, Double) - CType(txt_peso_tara.Text, Double))
+                            'Fin de Peso Tara Envase
                         End If
                         If (CType(lbl_peso_neto.Text, Double) < Total) Or (CType(PesoNeto.Text, Double) < 0) Then
                             PesoBruto.Text = "0.00"
@@ -495,7 +555,21 @@ Public Class AgregarBascula
                         PesoBruto.Text = "0.00"
                         TaraEnvase.Text = "0.00"
                         PesoNeto.Text = "0.00"
+
+                        'Acomodar el Peso Tara Envase
+                        TotalPesoTara = TotalPesoTara + CType(TaraEnvase.Text, Double)
+                        txt_peso_tara_envase.Text = TotalPesoTara
+                        txt_peso_tara.Text = (CType(txt_peso_tara_camion.Text, Double) + CType(txt_peso_tara_envase.Text, Double))
+                        lbl_peso_neto.Text = (CType(txt_peso_bruto.Text, Double) - CType(txt_peso_tara.Text, Double))
+                        'Fin de Peso Tara Envase
                     End If
+                    ddlUbicaciones.ToolTip = ddlUbicaciones.SelectedItem.Text
+                    ddlVariedades.ToolTip = ddlVariedades.SelectedItem.Text
+                    ddlEnvases.ToolTip = ddlEnvases.SelectedItem.Text
+                    Origen.ToolTip = Origen.Text
+                    ddlTarimas.ToolTip = ddlTarimas.SelectedItem.Text
+                    TaraEnvase.ToolTip = TaraEnvase.Text
+                    PesoNeto.ToolTip = PesoNeto.Text
                 Catch ex As Exception
                     Tools.AddErrorLog(oUsr.Mis.Log, ex)
                 End Try
@@ -509,6 +583,9 @@ Public Class AgregarBascula
             For Each row As GridViewRow In GridView2.Rows
                 If row.RowType = DataControlRowType.DataRow Then
                     'Dim keycont As Integer = GridView1.DataKeys(row.RowIndex).Value
+                    Dim ddlUbicaciones As DropDownList = DirectCast(row.FindControl("ddl_ubicacion"), DropDownList)
+                    Dim ddlVariedades As DropDownList = DirectCast(row.FindControl("ddl_variedad"), DropDownList)
+                    Dim ddlEnvases As DropDownList = DirectCast(row.FindControl("ddl_envase"), DropDownList)
                     GuiaID = row.FindControl("txt_GuiaID")
                     envase = row.FindControl("ddl_envase")
                     PesoEnvase = row.FindControl("txt_PesoEnvase")
@@ -516,11 +593,36 @@ Public Class AgregarBascula
                     PesoNeto = row.FindControl("txt_PesoNeto")
                     PesoBruto = row.FindControl("txt_PesoBruto")
                     Cantidad = row.FindControl("txt_Cantidad")
+                    ddlTarimas = row.FindControl("ddl_tarima")
+                    CantidadTarimas = row.FindControl("txt_Cantidad_Tarimas")
+                    PesoTarima = row.FindControl("txt_Peso_Tarima")
+                    Origen = row.FindControl("txt_Origen")
                     Dim Id As Integer
                     Id = envase.SelectedValue
+                    If Id = 8 Or Id = 9 Or Id = 10 Then
+                        GetIndex(ddlTarimas, -1)
+                        ddlTarimas.Enabled = True
+                        CantidadTarimas.Enabled = True
+                        CantidadTarimas.Text = "0"
+                        PesoTarima.Text = "0"
+                    Else
+                        GetIndex(ddlTarimas, 1)
+                        ddlTarimas.Enabled = False
+                        CantidadTarimas.Text = "0"
+                        PesoTarima.Text = "0"
+                        CantidadTarimas.Enabled = False
+                    End If
                     PesoEnvase.Text = PesoCajon(Id)
-                    TaraEnvase.Text = CType(PesoEnvase.Text, Double) * CType(Cantidad.Text, Double)
+                    TaraEnvase.Text = (CType(PesoEnvase.Text, Double) * CType(Cantidad.Text, Double)) + (CType(CantidadTarimas.Text, Double) * CType(PesoTarima.Text, Double))
                     PesoNeto.Text = CType(PesoBruto.Text, Double) - CType(TaraEnvase.Text, Double)
+
+                    'Acomodar el Peso Tara Envase
+                    TotalPesoTara = TotalPesoTara + CType(TaraEnvase.Text, Double)
+                    txt_peso_tara_envase.Text = TotalPesoTara
+                    txt_peso_tara.Text = (CType(txt_peso_tara_camion.Text, Double) + CType(txt_peso_tara_envase.Text, Double))
+                    lbl_peso_neto.Text = (CType(txt_peso_bruto.Text, Double) - CType(txt_peso_tara.Text, Double))
+                    'Fin de Peso Tara Envase
+
                     Total = Total + CType(PesoNeto.Text, Double)
                     If (CType(lbl_peso_neto.Text, Double) < Total) Or (CType(PesoNeto.Text, Double) < 0) Then
                         PesoBruto.Text = "0.00"
@@ -531,14 +633,25 @@ Public Class AgregarBascula
                         PesoBruto.BorderColor = Color.Black
                         PesoBruto.ForeColor = Color.Black
                     End If
+                    ddlUbicaciones.ToolTip = ddlUbicaciones.SelectedItem.Text
+                    ddlVariedades.ToolTip = ddlVariedades.SelectedItem.Text
+                    ddlEnvases.ToolTip = ddlEnvases.SelectedItem.Text
+                    Origen.ToolTip = Origen.Text
+                    ddlTarimas.ToolTip = ddlTarimas.SelectedItem.Text
+                    TaraEnvase.ToolTip = TaraEnvase.Text
+                    PesoNeto.ToolTip = PesoNeto.Text
                 End If
                 'ValidaGuiaID()
             Next
         Catch ex As Exception
+
             PesoEnvase.Text = "0.00"
             TaraEnvase.Text = "0.00"
             PesoNeto.Text = PesoBruto.Text
-            'ValidaGuiaID()
+            Origen.ToolTip = Origen.Text
+            ddlTarimas.ToolTip = ddlTarimas.SelectedItem.Text
+            TaraEnvase.ToolTip = TaraEnvase.Text
+            PesoNeto.ToolTip = PesoNeto.Text
         End Try
     End Sub
 
@@ -1343,4 +1456,185 @@ Public Class AgregarBascula
         End Try
     End Function
     'FIN DE METODOS PARA INVENTARIO
+
+
+    'MODIFICACIONES PARA VALIDAR CORRECTAMENTE EL PESO DE LA TARA
+    Private Sub txt_peso_tara_camion_TextChanged(sender As Object, e As EventArgs) Handles txt_peso_tara_camion.TextChanged
+        If String.IsNullOrEmpty(txt_peso_tara_camion.Text) Then
+            txt_peso_tara_camion.Text = "0.00"
+        End If
+        If IsNumeric(txt_peso_tara_camion.Text) Then
+            If CType(txt_peso_tara_camion.Text, Double) > 0 Then
+                txt_peso_tara.Text = (CType(txt_peso_tara_camion.Text, Double) + CType(txt_peso_tara_envase.Text, Double))
+                lbl_peso_neto.Text = (CType(txt_peso_bruto.Text, Double) - CType(txt_peso_tara.Text, Double))
+            Else
+                txt_peso_tara_camion.Text = "0.00"
+                txt_peso_tara.Text = (CType(txt_peso_tara_camion.Text, Double) + CType(txt_peso_tara_envase.Text, Double))
+                lbl_peso_neto.Text = (CType(txt_peso_bruto.Text, Double) - CType(txt_peso_tara.Text, Double))
+            End If
+        Else
+            txt_peso_tara_camion.Text = "0.00"
+            txt_peso_tara.Text = (CType(txt_peso_tara_camion.Text, Double) + CType(txt_peso_tara_envase.Text, Double))
+            lbl_peso_neto.Text = (CType(txt_peso_bruto.Text, Double) - CType(txt_peso_tara.Text, Double))
+        End If
+        ValidaPesoNeto()
+        If CType(lbl_peso_neto.Text, Double) < 0 Or CType(lbl_peso_neto.Text, Double) < Total Then
+            txt_peso_tara_camion.Text = "0.00"
+            txt_peso_tara.Text = (CType(txt_peso_tara_camion.Text, Double) + CType(txt_peso_tara_envase.Text, Double))
+            lbl_peso_neto.Text = (CType(txt_peso_bruto.Text, Double) - CType(txt_peso_tara.Text, Double))
+        End If
+    End Sub
+
+    Protected Sub ddl_tarima_Changed(sender As Object, e As EventArgs)
+        Try
+            TotalPesoTara = 0
+            Total = 0
+            For Each row As GridViewRow In GridView2.Rows
+                If row.RowType = DataControlRowType.DataRow Then
+                    'Dim keycont As Integer = GridView1.DataKeys(row.RowIndex).Value
+                    Dim ddlUbicaciones As DropDownList = DirectCast(row.FindControl("ddl_ubicacion"), DropDownList)
+                    Dim ddlVariedades As DropDownList = DirectCast(row.FindControl("ddl_variedad"), DropDownList)
+                    Dim ddlEnvases As DropDownList = DirectCast(row.FindControl("ddl_envase"), DropDownList)
+                    GuiaID = row.FindControl("txt_GuiaID")
+                    envase = row.FindControl("ddl_envase")
+                    PesoEnvase = row.FindControl("txt_PesoEnvase")
+                    TaraEnvase = row.FindControl("txt_TaraEnvase")
+                    PesoNeto = row.FindControl("txt_PesoNeto")
+                    PesoBruto = row.FindControl("txt_PesoBruto")
+                    Cantidad = row.FindControl("txt_Cantidad")
+                    ddlTarimas = row.FindControl("ddl_tarima")
+                    CantidadTarimas = row.FindControl("txt_Cantidad_Tarimas")
+                    PesoTarima = row.FindControl("txt_Peso_Tarima")
+                    Origen = row.FindControl("txt_Origen")
+                    Dim Id As Integer
+                    Id = ddlTarimas.SelectedValue
+                    PesoTarima.Text = PesoTarimas(Id)
+                    TaraEnvase.Text = (CType(PesoEnvase.Text, Double) * CType(Cantidad.Text, Double)) + (CType(CantidadTarimas.Text, Double) * CType(PesoTarima.Text, Double))
+                    PesoNeto.Text = CType(PesoBruto.Text, Double) - CType(TaraEnvase.Text, Double)
+
+                    'Acomodar el Peso Tara Envase
+                    TotalPesoTara = TotalPesoTara + CType(TaraEnvase.Text, Double)
+                    txt_peso_tara_envase.Text = TotalPesoTara
+                    txt_peso_tara.Text = (CType(txt_peso_tara_camion.Text, Double) + CType(txt_peso_tara_envase.Text, Double))
+                    lbl_peso_neto.Text = (CType(txt_peso_bruto.Text, Double) - CType(txt_peso_tara.Text, Double))
+                    'Fin de Peso Tara Envase
+
+                    Total = Total + CType(PesoNeto.Text, Double)
+                    If (CType(lbl_peso_neto.Text, Double) < Total) Or (CType(PesoNeto.Text, Double) < 0) Then
+                        PesoBruto.Text = "0.00"
+                        PesoBruto.BorderColor = Color.Red
+                        PesoBruto.ForeColor = Color.Red
+                        PesoNeto.Text = (CType(PesoBruto.Text, Double) - CType(TaraEnvase.Text, Double))
+                    Else
+                        PesoBruto.BorderColor = Color.Black
+                        PesoBruto.ForeColor = Color.Black
+                    End If
+                    ddlUbicaciones.ToolTip = ddlUbicaciones.SelectedItem.Text
+                    ddlVariedades.ToolTip = ddlVariedades.SelectedItem.Text
+                    ddlEnvases.ToolTip = ddlEnvases.SelectedItem.Text
+                    Origen.ToolTip = Origen.Text
+                    ddlTarimas.ToolTip = ddlTarimas.SelectedItem.Text
+                    TaraEnvase.ToolTip = TaraEnvase.Text
+                    PesoNeto.ToolTip = PesoNeto.Text
+                End If
+            Next
+        Catch ex As Exception
+            PesoTarima.Text = "0"
+            TaraEnvase.Text = (CType(PesoEnvase.Text, Double) * CType(Cantidad.Text, Double)) + (CType(CantidadTarimas.Text, Double) * CType(PesoTarima.Text, Double))
+            PesoNeto.Text = CType(PesoBruto.Text, Double) - CType(TaraEnvase.Text, Double)
+
+            'Acomodar el Peso Tara Envase
+            TotalPesoTara = TotalPesoTara + CType(TaraEnvase.Text, Double)
+            txt_peso_tara_envase.Text = TotalPesoTara
+            txt_peso_tara.Text = (CType(txt_peso_tara_camion.Text, Double) + CType(txt_peso_tara_envase.Text, Double))
+            lbl_peso_neto.Text = (CType(txt_peso_bruto.Text, Double) - CType(txt_peso_tara.Text, Double))
+            'Fin de Peso Tara Envase
+
+            Origen.ToolTip = Origen.Text
+            ddlTarimas.ToolTip = ddlTarimas.SelectedItem.Text
+            TaraEnvase.ToolTip = TaraEnvase.Text
+            PesoNeto.ToolTip = PesoNeto.Text
+        End Try
+    End Sub
+
+    Private Function PesoTarimas(ID As Integer) As String
+        Dim oSql As New SQLCargarDatos(oUsr)
+        Dim oCs As New ColeccionPrmSql
+        PesoTarimas = ""
+
+        Try
+            oCs.Create("@TarimaID", ID)
+            oCs.Create("_VALOR", "TarimaPaso")
+            Return oSql._Valor(oSql.PesoTar, oCs)
+        Catch ex As Exception
+            Tools.AddErrorLog(oUsr.Mis.Log, ex)
+        End Try
+    End Function
+
+    Protected Sub txt_Cantidad_Tarimas_Changed(sender As Object, e As EventArgs)
+        Try
+            TotalPesoTara = 0
+            Total = 0
+            For Each row As GridViewRow In GridView2.Rows
+                If row.RowType = DataControlRowType.DataRow Then
+                    'Dim keycont As Integer = GridView1.DataKeys(row.RowIndex).Value
+                    Dim ddlUbicaciones As DropDownList = DirectCast(row.FindControl("ddl_ubicacion"), DropDownList)
+                    Dim ddlVariedades As DropDownList = DirectCast(row.FindControl("ddl_variedad"), DropDownList)
+                    Dim ddlEnvases As DropDownList = DirectCast(row.FindControl("ddl_envase"), DropDownList)
+                    GuiaID = row.FindControl("txt_GuiaID")
+                    envase = row.FindControl("ddl_envase")
+                    PesoEnvase = row.FindControl("txt_PesoEnvase")
+                    TaraEnvase = row.FindControl("txt_TaraEnvase")
+                    PesoNeto = row.FindControl("txt_PesoNeto")
+                    PesoBruto = row.FindControl("txt_PesoBruto")
+                    Cantidad = row.FindControl("txt_Cantidad")
+                    ddlTarimas = row.FindControl("ddl_tarima")
+                    CantidadTarimas = row.FindControl("txt_Cantidad_Tarimas")
+                    PesoTarima = row.FindControl("txt_Peso_Tarima")
+                    Origen = row.FindControl("txt_Origen")
+                    Dim Id As Integer
+                    Id = ddlTarimas.SelectedValue
+                    PesoTarima.Text = PesoTarimas(Id)
+                    TaraEnvase.Text = (CType(PesoEnvase.Text, Double) * CType(Cantidad.Text, Double)) + (CType(CantidadTarimas.Text, Double) * CType(PesoTarima.Text, Double))
+                    PesoNeto.Text = CType(PesoBruto.Text, Double) - CType(TaraEnvase.Text, Double)
+
+                    'Acomodar el Peso Tara Envase
+                    TotalPesoTara = TotalPesoTara + CType(TaraEnvase.Text, Double)
+                    txt_peso_tara_envase.Text = TotalPesoTara
+                    txt_peso_tara.Text = (CType(txt_peso_tara_camion.Text, Double) + CType(txt_peso_tara_envase.Text, Double))
+                    lbl_peso_neto.Text = (CType(txt_peso_bruto.Text, Double) - CType(txt_peso_tara.Text, Double))
+                    'Fin de Peso Tara Envase
+
+                    Total = Total + CType(PesoNeto.Text, Double)
+                    If (CType(lbl_peso_neto.Text, Double) < Total) Or (CType(PesoNeto.Text, Double) < 0) Then
+                        PesoBruto.Text = "0.00"
+                        PesoBruto.BorderColor = Color.Red
+                        PesoBruto.ForeColor = Color.Red
+                        PesoNeto.Text = (CType(PesoBruto.Text, Double) - CType(TaraEnvase.Text, Double))
+                    Else
+                        PesoBruto.BorderColor = Color.Black
+                        PesoBruto.ForeColor = Color.Black
+                    End If
+                    ddlUbicaciones.ToolTip = ddlUbicaciones.SelectedItem.Text
+                    ddlVariedades.ToolTip = ddlVariedades.SelectedItem.Text
+                    ddlEnvases.ToolTip = ddlEnvases.SelectedItem.Text
+                    Origen.ToolTip = Origen.Text
+                    ddlTarimas.ToolTip = ddlTarimas.SelectedItem.Text
+                    TaraEnvase.ToolTip = TaraEnvase.Text
+                    PesoNeto.ToolTip = PesoNeto.Text
+                End If
+            Next
+        Catch ex As Exception
+            PesoTarima.Text = "0"
+            TaraEnvase.Text = (CType(PesoEnvase.Text, Double) * CType(Cantidad.Text, Double)) + (CType(CantidadTarimas.Text, Double) * CType(PesoTarima.Text, Double))
+            PesoNeto.Text = CType(PesoBruto.Text, Double) - CType(TaraEnvase.Text, Double)
+
+            'Acomodar el Peso Tara Envase
+            TotalPesoTara = TotalPesoTara + CType(TaraEnvase.Text, Double)
+            txt_peso_tara_envase.Text = TotalPesoTara
+            txt_peso_tara.Text = (CType(txt_peso_tara_camion.Text, Double) + CType(txt_peso_tara_envase.Text, Double))
+            lbl_peso_neto.Text = (CType(txt_peso_bruto.Text, Double) - CType(txt_peso_tara.Text, Double))
+            'Fin de Peso Tara Envase
+        End Try
+    End Sub
 End Class

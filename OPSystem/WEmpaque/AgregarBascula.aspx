@@ -150,13 +150,37 @@
                                 </tr>
                                 <tr>
                                     <td style="width: 150px">
+                                        <asp:Panel ID="Panel13" runat="server">
+                                            <asp:Label ID="Label13" runat="server" CssClass="col-md-2 control-label" Text="Peso Tara Camión" Width="150px"></asp:Label>
+                                        </asp:Panel>
+                                    </td>
+                                    <td>
+                                        <asp:Panel ID="Panel23" runat="server">
+                                            <asp:TextBox ID="txt_peso_tara_camion" runat="server" CssClass="form-control" Width="300px" AutoPostBack="True">0.00</asp:TextBox>
+                                        </asp:Panel>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 150px">
+                                        <asp:Panel ID="Panel24" runat="server">
+                                            <asp:Label ID="Label14" runat="server" CssClass="col-md-2 control-label" Text="Peso Tara Envase" Width="150px"></asp:Label>
+                                        </asp:Panel>
+                                    </td>
+                                    <td>
+                                        <asp:Panel ID="Panel25" runat="server">
+                                            <asp:TextBox ID="txt_peso_tara_envase" runat="server" CssClass="form-control" Width="300px" AutoPostBack="True" Enabled="False">0.00</asp:TextBox>
+                                        </asp:Panel>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 150px">
                                         <asp:Panel ID="Panel15" runat="server">
                                             <asp:Label ID="Label8" runat="server" CssClass="col-md-2 control-label" Text="Peso Tara" Width="150px"></asp:Label>
                                         </asp:Panel>
                                     </td>
                                     <td>
                                         <asp:Panel ID="Panel17" runat="server">
-                                            <asp:TextBox ID="txt_peso_tara" runat="server" CssClass="form-control" Width="300px" AutoPostBack="True">0.00</asp:TextBox>
+                                            <asp:TextBox ID="txt_peso_tara" runat="server" CssClass="form-control" Width="300px" AutoPostBack="True" Enabled="False">0.00</asp:TextBox>
                                         </asp:Panel>
                                     </td>
                                 </tr>
@@ -308,7 +332,7 @@
                                             <asp:TemplateField HeaderText="Guia ID">
                                                     <ItemTemplate>
                                                     <asp:TextBox ID="txt_GuiaID" runat="server"
-                                                        CssClass="form-control" ReadOnly="True" />
+                                                        CssClass="form-control" ReadOnly="True" Width="33px" />
                                                     </ItemTemplate>
                                                 </asp:TemplateField>
 
@@ -336,7 +360,7 @@
                                             <asp:TemplateField HeaderText="Peso Envase">
                                                     <ItemTemplate>
                                                     <asp:TextBox ID="txt_PesoEnvase" runat="server"
-                                                        CssClass="form-control" ReadOnly="true" />
+                                                        CssClass="form-control" ReadOnly="true" Width="53px" />
                                                     </ItemTemplate>
                                                 </asp:TemplateField>
 
@@ -347,11 +371,33 @@
                                                     </ItemTemplate>
                                                 </asp:TemplateField>
 
-                                            <asp:TemplateField HeaderText="Cantidad">
+                                            <asp:TemplateField HeaderText="Cantidad Envases">
                                                     <ItemTemplate>
                                                     <asp:TextBox ID="txt_Cantidad" runat="server" AutoPostBack="True"
                                                         CssClass="form-control" 
-                                                        OnTextChanged="txt_Cantidad_textchanged" />
+                                                        OnTextChanged="txt_Cantidad_textchanged" Width="61px" />
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
+
+                                            <asp:TemplateField HeaderText="Tipo Tarima">
+                                                    <ItemTemplate>
+                                                    <asp:DropDownList ID="ddl_tarima" runat="server" CssClass="form-control"
+                                                        AutoPostBack="True" OnTextChanged="ddl_tarima_Changed" />
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
+
+                                            <asp:TemplateField HeaderText="Peso Tarima">
+                                                    <ItemTemplate>
+                                                    <asp:TextBox ID="txt_Peso_Tarima" runat="server" AutoPostBack="True"
+                                                        CssClass="form-control" Width="53px" ReadOnly="true" />
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
+
+                                            <asp:TemplateField HeaderText="Cantidad Tarimas">
+                                                    <ItemTemplate>
+                                                    <asp:TextBox ID="txt_Cantidad_Tarimas" runat="server" AutoPostBack="True"
+                                                        CssClass="form-control" 
+                                                        OnTextChanged="txt_Cantidad_Tarimas_Changed" Width="50px" />
                                                     </ItemTemplate>
                                                 </asp:TemplateField>
 

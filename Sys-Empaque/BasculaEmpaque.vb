@@ -141,6 +141,12 @@ Public Class SQLCargarDatos
         End Get
     End Property
 
+    Public ReadOnly Property ComboTarimas() As String
+        Get
+            Return " SELECT TarimaID, TarimaDescripcion FROM TARIMAS "
+        End Get
+    End Property
+
     Public ReadOnly Property ComboOperadores() As String
         Get
             Return " SELECT TRO.OperadorID, TRO.OperadorNombre + ' ' + TRO.OperadorApellidos AS Nombre " &
@@ -178,6 +184,12 @@ Public Class SQLCargarDatos
     Public ReadOnly Property PesoEnv() As String
         Get
             Return " select EnvasePeso from ENVASES where EnvaseID = @EnvaseID  "
+        End Get
+    End Property
+
+    Public ReadOnly Property PesoTar() As String
+        Get
+            Return " SELECT TarimaPaso FROM TARIMAS WHERE TarimaID = @TarimaID  "
         End Get
     End Property
 

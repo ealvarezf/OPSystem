@@ -329,6 +329,78 @@ Partial Public Class AgregarBascula
     Protected WithEvents txt_peso_bruto As Global.System.Web.UI.WebControls.TextBox
     
     '''<summary>
+    '''Control Panel13.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Panel13 As Global.System.Web.UI.WebControls.Panel
+    
+    '''<summary>
+    '''Control Label13.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Label13 As Global.System.Web.UI.WebControls.Label
+    
+    '''<summary>
+    '''Control Panel23.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Panel23 As Global.System.Web.UI.WebControls.Panel
+    
+    '''<summary>
+    '''Control txt_peso_tara_camion.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents txt_peso_tara_camion As Global.System.Web.UI.WebControls.TextBox
+    
+    '''<summary>
+    '''Control Panel24.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Panel24 As Global.System.Web.UI.WebControls.Panel
+    
+    '''<summary>
+    '''Control Label14.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Label14 As Global.System.Web.UI.WebControls.Label
+    
+    '''<summary>
+    '''Control Panel25.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Panel25 As Global.System.Web.UI.WebControls.Panel
+    
+    '''<summary>
+    '''Control txt_peso_tara_envase.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents txt_peso_tara_envase As Global.System.Web.UI.WebControls.TextBox
+    
+    '''<summary>
     '''Control Panel15.
     '''</summary>
     '''<remarks>
